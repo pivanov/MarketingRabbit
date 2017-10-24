@@ -5,10 +5,29 @@ class User < ApplicationRecord
   validates :password_digest, presence: {message: 'Password can\'t be blank'}
   validates :password, length: {minimum: 6, allow_nil: true}
 
+  # like class methods that finds all the users that
+  # are of a certain 'type'
+  scope :businesses, -> { where(type: "Business")}
+  scope :agencies, -> { where(type: "Agency")}
 
+  # USING SINGLE TABLE INHERITANCE
+  # Key is in the user table where we have a colum with the name
+  # of 'type.' That is essntially all the is needed for
+  # rails to know that you want it to trigger STP.
+  # After that you simply create new models that inherit from
+  # User.
+  # Over in the routes file, I added routes for
+  # the models that inherit from User.
+  # The key part in these routes is again the key 'type'
+  # This sets a params key of 'type' which we can these use
+  # over in our User controller to make it more versatile
 
   attr_reader :password
   after_initialize :ensure_session_token
+
+  def self.types
+    ["Business", "Agency"]
+  end
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64

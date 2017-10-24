@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
+
   def create
-    @user = User.new(user_params)
+    @user = type_class.new(user_params)
     if @user.save
       login(@user)
       render 'api/users/show'
@@ -19,4 +20,13 @@ class Api::UsersController < ApplicationController
       :password
     )
   end
+
+  def type
+    User.types.include?(params[:type]) ? params[:type] : "User"
+  end
+
+  def type_class
+    type.constantize
+  end
+
 end

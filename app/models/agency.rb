@@ -1,0 +1,2 @@
+class Agency < User
+end
