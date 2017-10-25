@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024234409) do
+ActiveRecord::Schema.define(version: 20171025005911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,20 @@ ActiveRecord::Schema.define(version: 20171024234409) do
     t.string "firstname", null: false
     t.string "lastname", null: false
     t.string "type"
+    t.string "website"
+    t.string "organization", null: false
+    t.string "logo_file_name"
+    t.string "state"
+    t.string "city"
+    t.string "country"
+    t.integer "zipcode"
+    t.index ["city"], name: "index_users_on_city"
+    t.index ["country"], name: "index_users_on_country"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organization"], name: "index_users_on_organization"
+    t.index ["state"], name: "index_users_on_state"
     t.index ["type"], name: "index_users_on_type"
+    t.index ["zipcode"], name: "index_users_on_zipcode"
   end
 
 end

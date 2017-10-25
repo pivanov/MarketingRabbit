@@ -17,7 +17,13 @@ class Api::UsersController < ApplicationController
       :email,
       :firstname,
       :lastname,
-      :password
+      :password,
+      :organization,
+      :website,
+      :state,
+      :city,
+      :country,
+      :zipcode
     )
   end
 

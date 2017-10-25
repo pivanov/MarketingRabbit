@@ -1,7 +1,16 @@
-export const signup = () => {
+export const registerBusiness = (user) => {
   return $.ajax({
     method: "POST",
-    url: '/api/users'
+    url: '/api/businesses',
+    data: {user}
+  })
+}
+
+export const registerAgency = (user) => {
+  return $.ajax({
+    method: "POST",
+    url: '/api/agencies',
+    data: {user}
   })
 }
 
