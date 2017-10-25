@@ -3,8 +3,8 @@ class User < ApplicationRecord
   validates :firstname, :lastname,  presence:true
   validates :organization, presence:true
   validates :session_token, presence:true
-  validates :password_digest, presence: {message: 'Password can\'t be blank'}
-  validates :password, length: {minimum: 6, allow_nil: true}
+  validates :password_digest, presence: {message: "Password can't be blank"}
+  validates :password, length: {minimum: 6}, allow_nil: true
 
   # like class methods that finds all the users that
   # are of a certain 'type'
