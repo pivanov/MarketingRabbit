@@ -27,7 +27,6 @@ class BusinessSignUp extends React.Component{
 
   render() {
 
-
     return (
       <div>
         <div id="businessSignUpPage"></div>
