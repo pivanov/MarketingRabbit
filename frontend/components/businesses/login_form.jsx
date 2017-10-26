@@ -13,10 +13,6 @@ class LoginForm extends React.Component{
     this.handleInput = this.handleInput.bind(this)
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if()
-  // }
-
   componentWillMount(){
     this.props.clearSessionErrors()
   }
@@ -32,36 +28,20 @@ class LoginForm extends React.Component{
     )
   }
 
-  renderErrors() {
-    const errors = this.props.errors.map((error, idx)=>{
-        return <li key={idx}>{error}</li>
-    })
-    return (
-      <ul>
-        {errors}
-      </ul>
-    )
-  }
-
   checkForField(fieldError, field){
     const errorFieldObject= eval(`this.props.errors.${fieldError}`);
     const fieldObject = eval(`this.state.${field}`);
     if (errorFieldObject){
-      if(fieldObject.length == 0){
-        return (
-          <p>{this.props.errors[fieldError][0]}</p>
-        )
-      }
+      return (
+        <p>{this.props.errors[fieldError][0]}</p>
+      )
     }
   }
 
   checkForValidity(){
-    function isNotEmpty(element, index, array){
-      return element.length > 0
-    }
-    if(Object.values(this.state).every(isNotEmpty)){
+    if(this.props.errors['invalidcredentials']){
       return (
-        <p>{this.props.errors['invalidcredentials']}</p>
+        <p>{this.props.errors['invalidcredentials'][0]}</p>
       )
     }
   }

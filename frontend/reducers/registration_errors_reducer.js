@@ -1,4 +1,4 @@
-import RECEIVE_REGISTRATION_ERRORS from '../actions/registration_actions'
+import { RECEIVE_REGISTRATION_ERRORS } from '../actions/registration_actions'
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions'
 
 const RegistrationErrorsReducer = (state = {}, action) =>{

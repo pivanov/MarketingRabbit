@@ -19,7 +19,7 @@ class BusinessSignUp extends React.Component{
   }
 
   componentWillMount(){
-    this.props.clearErrors();
+    this.props.clearRegistrationErrors();
   }
 
   handleInput(field){
@@ -33,25 +33,16 @@ class BusinessSignUp extends React.Component{
     this.props.registerBusiness(this.state).then(()=>this.props.history.push('/'))
   }
 
-  renderErrors(){
-    const errors = this.props.errors.map((error, idx)=>{
-      return <li key={idx}>{error}</li>
-    })
-    return (
-      <ul>
-        {errors}
-      </ul>
-    )
-  }
 
   checkForField(fieldError, field){
     const errorFieldObject= eval(`this.props.errors.${fieldError}`);
-    const fieldObject = eval(`this.state.${field}`);
     if (errorFieldObject){
-      if(fieldObject.length == 0){
+      if (fieldError == 'organization') {
         return (
-          <p>{this.props.errors[fieldError][0]}</p>
+          <p>business name can't be blank</p>
         )
+      } else {
+        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
       }
     }
   }
@@ -60,26 +51,31 @@ class BusinessSignUp extends React.Component{
 
     return (
         <form className="sharedForm" onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
           <label htmlFor="firstname">First Name</label>
           <input onChange={this.handleInput('firstname')} id="firstname" type="text" value={this.state.firstname}/>
+          {this.checkForField('firstname', 'first name')}
           <br />
           <label htmlFor="lastname">Last Name</label>
           <input onChange={this.handleInput('lastname')} id="lastname" type="text" value={this.state.lastname}/>
+          {this.checkForField('lastname', 'last name')}
           <br />
           <label htmlFor="organization">Business Name</label>
           <input onChange={this.handleInput('organization')} id="organization" type="text" value={this.state.organization}/>
+          {this.checkForField('organization', 'organization')}
           <br />
           <label htmlFor="email">Business Email</label>
           <input onChange={this.handleInput('email')} id="email" type="text" value={this.state.email} />
+          {this.checkForField('email', 'email')}
           <br />
 
           <label htmlFor="website">Website</label>
           <input onChange={this.handleInput('website')} id="website" type="text" value={this.state.website} />
+          {this.checkForField('website', 'website')}
           <br />
 
           <label htmlFor="password">Password</label>
           <input onChange={this.handleInput('password')} id="password" type="password" value={this.state.password}/>
+          {this.checkForField('password', 'password')}
           <br />
 
           <button className="submitButton">Create Account</button>
