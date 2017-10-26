@@ -44,6 +44,18 @@ class BusinessSignUp extends React.Component{
     )
   }
 
+  checkForField(fieldError, field){
+    const errorFieldObject= eval(`this.props.errors.${fieldError}`);
+    const fieldObject = eval(`this.state.${field}`);
+    if (errorFieldObject){
+      if(fieldObject.length == 0){
+        return (
+          <p>{this.props.errors[fieldError][0]}</p>
+        )
+      }
+    }
+  }
+
   render() {
 
     return (

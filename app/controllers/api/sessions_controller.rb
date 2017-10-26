@@ -10,7 +10,17 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render 'api/users/show'
     else
-      render json: ['invalid credentials'], status: 404
+      # render json: ['invalid credentials'], status: 404
+      if params[:user][:email].length == 0 && params[:user][:password].length == 0
+        render json: {:blankdPassword => ["Password can't be blank"], :invalidEmail => ["Must be a valid emial"]}, status: 404
+      elsif params[:user][:email].length == 0
+        render json: {:invalidEmail => ["Must be a valid email"]}, status: 404;
+      elsif params[:user][:password].length ==0
+        render json: {:blankPassword => ["Password can't be blank"]}, status: 404;
+      else
+        render json: {:invalidcredentials => ["Invalid credentials"]}, status: 404;
+      end
+
     end
   end
 
@@ -21,7 +31,7 @@ class Api::SessionsController < ApplicationController
       logout!
       render json: {}
     else
-      render json: ['No user signed in'], status: 404
+      render json: {:noUser =>['No user signed in'] }, status: 404
     end
 
   end

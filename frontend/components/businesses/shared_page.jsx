@@ -11,13 +11,13 @@ class SharedPage extends React.Component {
     let component;
     if(this.props.match.path === '/signup'){
       component = <BusinessSignUp
-                    errors={this.props.errors}
-                    clearErrors={this.props.clearErrors}
+                    errors={this.props.registrationErrors}
+                    clearRegistrationErrors={this.props.clearRegistrationErrors}
                     registerBusiness={this.props.registerBusiness}/>
     } else if(this.props.match.path === "/login"){
       component = <LoginForm
-                    errors={this.props.errors}
-                    clearErrors = {this.props.clearErrors}
+                    errors={this.props.sessionErrors}
+                    clearSessionErrors = {this.props.clearSessionErrors}
                     login={this.props.login}/>
     } else if(this.props.match.path === '/bridge'){
       component = <BridgePage />
