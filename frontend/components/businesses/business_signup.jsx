@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class BusinessSignUp extends React.Component{
   constructor(props){
@@ -8,10 +10,12 @@ class BusinessSignUp extends React.Component{
       lastname: "",
       organization: "",
       email: "",
-      password: ""
+      password: "",
+      website: ""
     }
 
     this.hanleInput = this.handleInput.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleInput(field){
@@ -22,43 +26,42 @@ class BusinessSignUp extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-
+    debugger
+    this.props.registerBusiness(this.state).then(()=>this.props.history.push('/'))
   }
 
   render() {
 
     return (
-      <div>
-        <div id="businessSignUpPage"></div>
-        <section className="formContainer">
-          <form className="signupForm" onSubmit={this.handleSubmit}>
-            <label htmlFor="firstname">First Name</label>
-            <input onChange={this.handleInput('firstname')} id="firstname" type="text" value={this.state.firstname}/>
-            <br />
-            <label htmlFor="lastname">Last Name</label>
-            <input onChange={this.handleInput('lastname')} id="lastname" type="text" value={this.state.lastname}/>
-            <br />
-            <label htmlFor="organization">Business Name</label>
-            <input onChange={this.handleInput('organization')} id="organization" type="text" value={this.state.organization}/>
-            <br />
-            <label htmlFor="email">Business Email</label>
-            <input onChange={this.handleInput('email')} id="email" type="text" value={this.state.email} />
-            <br />
-            <label htmlFor="password">Password</label>
-            <input onChange={this.handleInput('password')} id="password" type="password" value={this.state.password}/>
-            <br />
+        <form className="sharedForm" onSubmit={this.handleSubmit}>
+          <label htmlFor="firstname">First Name</label>
+          <input onChange={this.handleInput('firstname')} id="firstname" type="text" value={this.state.firstname}/>
+          <br />
+          <label htmlFor="lastname">Last Name</label>
+          <input onChange={this.handleInput('lastname')} id="lastname" type="text" value={this.state.lastname}/>
+          <br />
+          <label htmlFor="organization">Business Name</label>
+          <input onChange={this.handleInput('organization')} id="organization" type="text" value={this.state.organization}/>
+          <br />
+          <label htmlFor="email">Business Email</label>
+          <input onChange={this.handleInput('email')} id="email" type="text" value={this.state.email} />
+          <br />
 
-            <div className="submitButtonContainer">
-              <button className="submitButton">Create Account</button>
-            </div>
-          </form>
-        </section>
+          <label htmlFor="website">Website</label>
+          <input onChange={this.handleInput('website')} id="website" type="text" value={this.state.website} />
+          <br />
 
-      </div>
+          <label htmlFor="password">Password</label>
+          <input onChange={this.handleInput('password')} id="password" type="password" value={this.state.password}/>
+          <br />
+
+          <button className="submitButton">Create Account</button>
+
+        </form>
     )
   }
 
 }
 
 
-export default BusinessSignUp;
+export default withRouter(BusinessSignUp);
