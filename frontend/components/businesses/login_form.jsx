@@ -13,6 +13,16 @@ class LoginForm extends React.Component{
     this.handleInput = this.handleInput.bind(this)
   }
 
+  // componentWillReceiveProps(nextProps){
+  //   if(this.props.errors.length != 0){
+  //     this.props.clearErrors()
+  //   }
+  // }
+
+  componentWillMount(){
+    this.props.clearErrors()
+  }
+
   handleSubmit(e){
     e.preventDefault();
     this.props.login(this.state).then(()=>this.props.history.push('/'))
@@ -23,10 +33,23 @@ class LoginForm extends React.Component{
       this.setState({[field]: e.target.value})
     )
   }
+
+  renderErrors() {
+    const errors = this.props.errors.map((error, idx)=>{
+        return <li key={idx}>{error}</li>
+    })
+    return (
+      <ul>
+        {errors}
+      </ul>
+    )
+  }
+
   render(){
 
     return(
       <form className="sharedForm" onSubmit={this.handleSubmit}>
+        {this.renderErrors()}
         <label htmlFor="signinemail">Email</label>
         <input onChange={this.handleInput('email')} id="signinemail" type="text" value={this.state.email}/>
         <br/>

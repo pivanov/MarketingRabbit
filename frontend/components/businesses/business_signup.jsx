@@ -18,6 +18,10 @@ class BusinessSignUp extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentWillMount(){
+    this.props.clearErrors();
+  }
+
   handleInput(field){
     return (e) => (
       this.setState({[field]: e.target.value})
@@ -26,14 +30,25 @@ class BusinessSignUp extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    debugger
     this.props.registerBusiness(this.state).then(()=>this.props.history.push('/'))
+  }
+
+  renderErrors(){
+    const errors = this.props.errors.map((error, idx)=>{
+      return <li key={idx}>{error}</li>
+    })
+    return (
+      <ul>
+        {errors}
+      </ul>
+    )
   }
 
   render() {
 
     return (
         <form className="sharedForm" onSubmit={this.handleSubmit}>
+          {this.renderErrors()}
           <label htmlFor="firstname">First Name</label>
           <input onChange={this.handleInput('firstname')} id="firstname" type="text" value={this.state.firstname}/>
           <br />
