@@ -1,7 +1,7 @@
 class Industry < ApplicationRecord
 
   has_many :business_servicings,
-    class_name: 'BusinessServicings',
+    class_name: 'BusinessServicing',
     foreign_key:  :industry_id,
     primary_key: :id
 

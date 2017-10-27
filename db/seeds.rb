@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+industries_array = []
+File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
+  industries_array << line.chomp
+end
+
+industries_array.each do |industry|
+  Industry.create({name: industry})
+end
