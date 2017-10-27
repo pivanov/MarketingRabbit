@@ -1,0 +1,3 @@
+class BusinessServicings < ApplicationRecord
+
+end
