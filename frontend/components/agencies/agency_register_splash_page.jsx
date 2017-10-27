@@ -19,7 +19,7 @@ class AgencyRegisterSplashPage extends React.Component{
               <AgencyFirstForm
                   registerAgency={this.props.registerAgency}
                   clearRegistrationErrors={this.props.clearRegistrationErrors}
-                  registrationErrors={this.props.registrationErrors}/>
+                  errors={this.props.errors}/>
             </section>
           </div>
         </header>

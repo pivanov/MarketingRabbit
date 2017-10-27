@@ -13,8 +13,10 @@ class BridgePage extends React.Component{
       <form className="sharedForm">
         <button className="thirdPartyAuthButton">Linkedin</button>
         <button className="thirdPartyAuthButton">Google</button>
-        <p>or</p>
-        <p>Login or sign up with email</p>
+        <section className="middle-text-bridge">
+          <p>or</p>
+          <p>Login or sign up with email</p>
+        </section>
         <div className="authButtonsContainer">
           <Link to="/login" className="authButtons">Login</Link>
           <Link to="/signup" className="authButtons">Sign Up</Link>

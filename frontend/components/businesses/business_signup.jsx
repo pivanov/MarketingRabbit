@@ -37,13 +37,12 @@ class BusinessSignUp extends React.Component{
   checkForField(fieldError, field){
     const errorFieldObject= eval(`this.props.errors.${fieldError}`);
     if (errorFieldObject){
-      if (fieldError == 'organization') {
-        return (
-          <p>business name can't be blank</p>
-        )
-      } else {
+      if(fieldError == "password"){
         return <p>{field + " " + this.props.errors[fieldError][0]}</p>
+      } else {
+        return <p>{field + " " + "is required"}</p>
       }
+
     }
   }
 
@@ -61,7 +60,7 @@ class BusinessSignUp extends React.Component{
           <br />
           <label htmlFor="organization">Business Name</label>
           <input onChange={this.handleInput('organization')} id="organization" placeholder="Business name" type="text" value={this.state.organization}/>
-          {this.checkForField('organization', 'organization')}
+          {this.checkForField('organization', 'business name')}
           <br />
           <label htmlFor="email">Business Email</label>
           <input onChange={this.handleInput('email')} id="email" placeholder="you@your-email.com" type="text" value={this.state.email} />
