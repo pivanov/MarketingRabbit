@@ -52,29 +52,29 @@ class BusinessSignUp extends React.Component{
     return (
         <form className="sharedForm" onSubmit={this.handleSubmit}>
           <label htmlFor="firstname">First Name</label>
-          <input onChange={this.handleInput('firstname')} id="firstname" type="text" value={this.state.firstname}/>
+          <input onChange={this.handleInput('firstname')} id="firstname" placeholder="First name" type="text" value={this.state.firstname}/>
           {this.checkForField('firstname', 'first name')}
           <br />
           <label htmlFor="lastname">Last Name</label>
-          <input onChange={this.handleInput('lastname')} id="lastname" type="text" value={this.state.lastname}/>
+          <input onChange={this.handleInput('lastname')} id="lastname" placeholder="Last name" type="text" value={this.state.lastname}/>
           {this.checkForField('lastname', 'last name')}
           <br />
           <label htmlFor="organization">Business Name</label>
-          <input onChange={this.handleInput('organization')} id="organization" type="text" value={this.state.organization}/>
+          <input onChange={this.handleInput('organization')} id="organization" placeholder="Business name" type="text" value={this.state.organization}/>
           {this.checkForField('organization', 'organization')}
           <br />
           <label htmlFor="email">Business Email</label>
-          <input onChange={this.handleInput('email')} id="email" type="text" value={this.state.email} />
+          <input onChange={this.handleInput('email')} id="email" placeholder="you@your-email.com" type="text" value={this.state.email} />
           {this.checkForField('email', 'email')}
           <br />
 
           <label htmlFor="website">Website</label>
-          <input onChange={this.handleInput('website')} id="website" type="text" value={this.state.website} />
+          <input onChange={this.handleInput('website')} id="website" placeholder="https://your-website.com" type="text" value={this.state.website} />
           {this.checkForField('website', 'website')}
           <br />
 
           <label htmlFor="password">Password</label>
-          <input onChange={this.handleInput('password')} id="password" type="password" value={this.state.password}/>
+          <input onChange={this.handleInput('password')} id="password" placeholder="Password" type="password" value={this.state.password}/>
           {this.checkForField('password', 'password')}
           <br />
 

@@ -15,3 +15,17 @@
 // #app-container{
 //   height: 100%;
 // }
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: 	$place-holder-grey;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: 	$place-holder-grey;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: 	$place-holder-grey;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: 	$place-holder-grey;
+}

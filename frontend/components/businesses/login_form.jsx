@@ -52,12 +52,12 @@ class LoginForm extends React.Component{
       <form className="sharedForm" onSubmit={this.handleSubmit}>
         {this.checkForValidity()}
         <label htmlFor="signinemail">Email</label>
-        <input onChange={this.handleInput('email')} id="signinemail" type="text" value={this.state.email}/>
+        <input onChange={this.handleInput('email')} id="signinemail" type="text" placeholder="you@your-email.com" value={this.state.email}/>
         {this.checkForField('invalidEmail', 'email')}
         <br/>
 
         <label htmlFor="signinpassword">Password</label>
-        <input type="password" onChange={this.handleInput('password')} id="signinpassword"/>
+        <input type="password" onChange={this.handleInput('password')} placeholder="Password" id="signinpassword"/>
         {this.checkForField('blankPassword', 'password')}
         <br/>
 

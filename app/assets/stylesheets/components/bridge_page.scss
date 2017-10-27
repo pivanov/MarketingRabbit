@@ -8,12 +8,13 @@
 
 
 .thirdPartyAuthButton:nth-child(1){
-  background-color: blue;
+  background-color: #0084bf;
   color: white;
 }
 
 .thirdPartyAuthButton:nth-child(2){
-  background-color: orange;
+  background-color: #db4437;
+  color: white;
 }
 
 .authButtonsContainer{
@@ -22,7 +23,8 @@
 }
 
 .authButtons {
-  background-color: red;
+  background-color: $pure-orange;
+  color: white;
   width: 47.5%;
   text-align: center;
   margin: 0 auto;

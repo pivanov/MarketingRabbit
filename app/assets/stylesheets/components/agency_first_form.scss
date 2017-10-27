@@ -2,14 +2,19 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  // display: table-cell;
-  // vertical-align: middle;
-  // align-items: center;
   justify-content: center;
 }
 
 .agencyFirstForm button {
   margin: 20px;
-  background-color: green;
   text-align:center;
+  background-color: $pure-orange;
+  color:white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.agencyFirstForm input {
+  height: 50px;
+  border-bottom: 1px solid $light-grey;
 }
