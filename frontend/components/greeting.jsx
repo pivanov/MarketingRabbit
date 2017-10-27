@@ -16,7 +16,11 @@ class Greeting extends React.Component{
       )
     } else {
       return(
-        <Link to='/bridge'> Log in</Link>
+        <section>
+          <Link to='/register/agency'> Register your agency </Link>
+          <br />
+          <Link to='/bridge'> Log in</Link>
+        </section>
       )
     }
   }
