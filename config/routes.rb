@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :businesses, controller: 'users', type: 'Business', only: [:create]
     resources :agencies, controller: 'users', type: 'Agency', only: [:create]
     resource :session, only: [:create, :destroy]
+    resources :industries, only: [:index]
+    resources :sectors, only: [:index]
   end
 
 end

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+// import Select from 'react-virtualized-select';
+// import 'react-select/dist/react-select.css';
+// top two imports are for select-drop-down package
 
 class BusinessSignUp extends React.Component{
   constructor(props){
@@ -9,6 +12,7 @@ class BusinessSignUp extends React.Component{
       firstname: "",
       lastname: "",
       organization: "",
+      industry_id: "",
       email: "",
       password: "",
       website: ""
@@ -71,6 +75,10 @@ class BusinessSignUp extends React.Component{
           <label htmlFor="organization">Business Name</label>
           <input onChange={this.handleInput('organization')} id="organization" placeholder="Business name" type="text" value={this.state.organization}/>
           {this.checkForField('organization', 'business name')}
+          <br />
+
+          <label htmlFor="industry">Industry</label>
+          <input onChange={this.handleInput('industry')} id="industry" placeholder="Industry" />
           <br />
           <label htmlFor="email">Business Email</label>
           <input onChange={this.handleInput('email')} id="email" placeholder="you@your-email.com" type="text" value={this.state.email} />
