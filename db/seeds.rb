@@ -7,11 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-industries_array = []
-File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
-  industries_array << line.chomp
+sectors_array = []
+File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
+  sectors_array << line.chomp
 end
 
-industries_array.each do |industry|
-  Industry.create({name: industry})
+sectors_array.each do |sector|
+  Sector.create({name: sector})
+end
+
+
+sector_id = nil
+File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
+  industry = line.chomp
+  if sectors_array.include?(industry)
+    sector_id = Sector.find_by(name: industry).id
+    next
+  end
+  Industry.create({name: industry, sector_id: sector_id})
 end
