@@ -50,13 +50,19 @@ class BusinessSignUp extends React.Component{
 
     return (
         <form className="sharedForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="firstname">First Name</label>
-          <input onChange={this.handleInput('firstname')} id="firstname" placeholder="First name" type="text" value={this.state.firstname}/>
-          {this.checkForField('firstname', 'first name')}
-          <br />
-          <label htmlFor="lastname">Last Name</label>
-          <input onChange={this.handleInput('lastname')} id="lastname" placeholder="Last name" type="text" value={this.state.lastname}/>
-          {this.checkForField('lastname', 'last name')}
+          <div className="full-name-container-business">
+            <div className="first-name-container">
+              <label htmlFor="firstname">First Name</label>
+              <input onChange={this.handleInput('firstname')} id="firstname" placeholder="First name" type="text" value={this.state.firstname}/>
+              {this.checkForField('firstname', 'first name')}
+            </div>
+
+            <div className="last-name-container">
+              <label htmlFor="lastname">Last Name</label>
+              <input onChange={this.handleInput('lastname')} id="lastname" placeholder="Last name" type="text" value={this.state.lastname}/>
+              {this.checkForField('lastname', 'last name')}
+            </div>
+          </div>
           <br />
           <label htmlFor="organization">Business Name</label>
           <input onChange={this.handleInput('organization')} id="organization" placeholder="Business name" type="text" value={this.state.organization}/>

@@ -2,27 +2,35 @@
   // background-image:  image-url("business_signup_image.jpg");
   background-color: $lightest-grey;
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
+.shared-form-main-content-container{
+  height: 85%;
+  width: 100%;
+}
 
-.formContainer {
+.shared-form-content{
   // take up 500px and then evenly split the rest
   // with margin-left and margin-right
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.formContainer {
+  margin-top:20px;
   background-color: white;
   padding: 30px;
   border: 1px solid $light-grey;
-  position: relative;
   border-radius: 5px;
+}
+
+
+.sharedForm p{
+  color: red;
 }
 
 
@@ -33,7 +41,7 @@
 }
 
 .sharedForm input {
-  height: 50px;
+  height: 35px;
   border-bottom: 1px solid $light-grey;
 }
 
@@ -45,4 +53,24 @@
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+
+.form-bottom-text-container{
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid $light-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+
+.shared-form-bottom-button{
+  padding: 5px 15px;
+  border: 1px solid $black-grey;
+}
+
+.shared-form-bottom-button:hover{
+  background-color: $light-grey;
 }

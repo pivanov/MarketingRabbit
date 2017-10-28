@@ -1,0 +1,16 @@
+.full-name-container-business{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1em;
+}
+
+
+.first-name-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.last-name-container{
+  display: flex;
+  flex-direction: column;
+}
