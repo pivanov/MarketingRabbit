@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as APIUtil from './util/session_api_util.js';
-import { login, logout, registerBusiness, registerAgency } from './actions/session_actions'
-import configureStore from './store/store.js'
-import Root from './components/root'
+import { login, logout, registerBusiness, registerAgency } from './actions/session_actions';
+import configureStore from './store/store.js';
+import Root from './components/root';
+import * as APINativesUtil from './util/natives_api_util.js';
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -17,6 +18,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     store = configureStore();
   }
   // TESTING
+  window.fetchIndustries = APINativesUtil.fetchIndustries;
+  window.fetchSectors = APINativesUtil.fetchSectors;
   window.registerBusiness = APIUtil.registerBusiness;
   window.logout = logout;
   window.login = login;
