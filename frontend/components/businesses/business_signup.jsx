@@ -39,6 +39,10 @@ class BusinessSignUp extends React.Component{
     if (errorFieldObject){
       if(fieldError == "password"){
         return <p>{field + " " + this.props.errors[fieldError][0]}</p>
+      } else if(fieldError == 'email' && this.props.errors[fieldError][0] !== 'has already been taken'){
+        return <p>{field + " " + "is required"}</p>
+      } else if (fieldError == "email"){
+        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
       } else {
         return <p>{field + " " + "is required"}</p>
       }
