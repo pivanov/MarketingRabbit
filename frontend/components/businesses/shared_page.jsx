@@ -18,7 +18,9 @@ class SharedPage extends React.Component {
       component = <BusinessSignUp
                     errors={this.props.registrationErrors}
                     clearRegistrationErrors={this.props.clearRegistrationErrors}
-                    registerBusiness={this.props.registerBusiness}/>
+                    registerBusiness={this.props.registerBusiness}
+                    industries={this.props.industries}
+                    sectors={this.props.sectors}/>
     } else if(this.props.match.path === "/login"){
       top_text = "Log in to an existing account";
       bottom_text="Don't have an account?"

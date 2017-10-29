@@ -19,6 +19,7 @@ class Api::UsersController < ApplicationController
       :lastname,
       :password,
       :organization,
+      :industry_id,
       :website,
       :state,
       :city,

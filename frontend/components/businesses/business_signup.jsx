@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-// import Select from 'react-virtualized-select';
-// import 'react-select/dist/react-select.css';
-// top two imports are for select-drop-down package
+import VirtualizedSelect from 'react-virtualized-select';
+import 'react-select/dist/react-select.css';
+import 'react-virtualized/styles.css'
+import 'react-virtualized-select/styles.css'
+
+// last two imports are for select-drop-down package
+// need css-loader and style-loader in webpack
 
 class BusinessSignUp extends React.Component{
   constructor(props){
@@ -55,6 +59,9 @@ class BusinessSignUp extends React.Component{
   }
 
   render() {
+    const industries = this.props.industries.map((industry)=>{
+      return {value: industry.id, label: industry.name}
+    })
 
     return (
         <form className="sharedForm" onSubmit={this.handleSubmit}>
@@ -76,9 +83,9 @@ class BusinessSignUp extends React.Component{
           <input onChange={this.handleInput('organization')} id="organization" placeholder="Business name" type="text" value={this.state.organization}/>
           {this.checkForField('organization', 'business name')}
           <br />
-
           <label htmlFor="industry">Industry</label>
-          <input onChange={this.handleInput('industry')} id="industry" placeholder="Industry" />
+          <VirtualizedSelect autoFocus clearable={false} className="business-industry-options-bar" options={industries} value={this.state.industry_id} onChange={val=>this.setState({industry_id: val.value})} />
+
           <br />
           <label htmlFor="email">Business Email</label>
           <input onChange={this.handleInput('email')} id="email" placeholder="you@your-email.com" type="text" value={this.state.email} />

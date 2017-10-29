@@ -8,13 +8,24 @@ class Greeting extends React.Component{
 
   render() {
     if(this.props.currentUser){
-      return (
-        <div>
-          <h1> Hello {this.props.currentUser.organization}</h1>
-          <h1> Account: {this.props.currentUser.type}</h1>
-          <button onClick={this.props.logout}>Logout</button>
-        </div>
-      )
+      if(this.props.currentUser.type == 'Business'){
+        return (
+          <div>
+            <h1> Hello {this.props.currentUser.organization}</h1>
+            <h1> Account: {this.props.currentUser.type}</h1>
+            <h1> Industry: {this.props.currentUser.industry.name} </h1>
+            <button onClick={this.props.logout}>Logout</button>
+          </div>
+        )
+      } else if (this.props.currentUser.type == 'Agency'){
+        return (
+          <div>
+            <h1> Hello {this.props.currentUser.organization}</h1>
+            <h1> Account: {this.props.currentUser.type}</h1>
+            <button onClick={this.props.logout}>Logout</button>
+          </div>
+        )
+      }
     } else {
       return(
         <section>

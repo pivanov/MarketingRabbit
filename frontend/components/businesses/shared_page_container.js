@@ -5,7 +5,9 @@ import { receiveRegistrationErrors, registerBusiness} from '../../actions/regist
 
 const mapStateToProps = (state) => ({
   sessionErrors: state.errors.session,
-  registrationErrors: state.errors.registration
+  registrationErrors: state.errors.registration,
+  industries: state.entities.industries,
+  sectors: state.entities.sectors
 });
 
 const mapDispatchToProps = (dispatch) => ({
