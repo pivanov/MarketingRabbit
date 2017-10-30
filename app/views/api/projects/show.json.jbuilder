@@ -1,4 +1,5 @@
 json.extract! @project,
+:id,
 :business_id,
 :project_name,
 :service_needed,

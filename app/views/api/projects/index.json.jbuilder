@@ -1,4 +1,5 @@
 json.array! @projects,
+      :id,
       :business_id,
       :project_name,
       :service_needed,
