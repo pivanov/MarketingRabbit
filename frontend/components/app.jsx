@@ -12,7 +12,6 @@ const App = () => (
     <GreeingContainer />
     <AuthRoute exact path="/signup" component={SharedPageContainer} />
     <AuthRoute exact path="/login" component={SharedPageContainer} />
-    <AuthRoute exact path="/bridge" component={SharedPageContainer}/>
     <AuthRoute exact path="/register/agency" component={AgencyRegisterSplashContainer} />
     <BusinessProtectedRoute exact path="/service-form" component={ServiceFormContainer} />
   </div>

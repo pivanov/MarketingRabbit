@@ -31,7 +31,7 @@ class Greeting extends React.Component{
         <section>
           <Link to='/register/agency'> Register your agency </Link>
           <br />
-          <Link to='/bridge'> Log in</Link>
+          <Link to='/login'> Log in</Link>
         </section>
       )
     }

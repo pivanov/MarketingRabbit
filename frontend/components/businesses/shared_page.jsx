@@ -1,7 +1,6 @@
 import React from 'react';
 import BusinessSignUp from './business_signup';
 import LoginForm from './login_form';
-import BridgePage from './bridge_page';
 import { Link } from 'react-router-dom';
 
 class SharedPage extends React.Component {
@@ -30,8 +29,6 @@ class SharedPage extends React.Component {
                     errors={this.props.sessionErrors}
                     clearSessionErrors = {this.props.clearSessionErrors}
                     login={this.props.login}/>
-    } else if(this.props.match.path === '/bridge'){
-      component = <BridgePage />
     }
     return (
       <div id="sharedPage">
