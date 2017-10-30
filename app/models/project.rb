@@ -2,7 +2,8 @@ class Project < ApplicationRecord
   validates :business_id, :project_name, :service_needed, :service_needed_details, presence:true
   validates :project_start_date, :monthly_budget, presence:true
   validates :agency_preference, :location_preference, inclusion: { in: [true, false] }
-  after_initialize :set_defaults
+  validate :ensure_valid_date
+  after_initialize :set_defaults, :parse_date_input
 
   belongs_to :business,
     class_name: 'Business',
@@ -15,8 +16,16 @@ class Project < ApplicationRecord
     primary_key: :id,
     optional: true
 
+  def ensure_valid_date
+    if project_start_date.present? && project_start_date < Date.today
+      errors.add(:project_start_date, "Invalid start date")
+    end
+  end
 
   private
+  def parse_date_input
+    self.project_start_date = Date.parse('2017-10-30') if self.project_start_date.nil?
+  end
 
   def set_defaults
     self.location_preference = false if self.location_preference.nil?

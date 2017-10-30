@@ -56,7 +56,8 @@ class Api::ProjectsController < ApplicationController
       :agency_preference,
       :agency_type,
       :agency_size,
-      :provider_id
+      :provider_id,
+      :location
     )
   end
 
