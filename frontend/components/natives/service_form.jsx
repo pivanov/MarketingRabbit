@@ -2,6 +2,7 @@ import React from 'react'
 
 
 var projectFields = {
+  business_id: ""
   project_name: "",
   service_needed: "",
   service_needed_details: "",
@@ -11,7 +12,7 @@ var projectFields = {
   agency_preference: false,
   agency_type: "",
   agency_size: "",
-
+  provider_id: ""
 }
 
 // need formErrors

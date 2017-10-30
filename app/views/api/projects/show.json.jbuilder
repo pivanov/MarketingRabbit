@@ -1,0 +1,13 @@
+json.extract! @project,
+:business_id,
+:project_name,
+:service_needed,
+:service_needed_details,
+:service_needed_details,
+:project_start_date,
+:monthly_budget,
+:location_preference,
+:agency_preference,
+:agency_type,
+:agency_size,
+:provider_id

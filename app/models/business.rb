@@ -11,12 +11,17 @@ class Business < User
 
   belongs_to :industry,
     class_name: 'Industry',
-    foreign_key: 'industry_id',
+    foreign_key: :industry_id,
     primary_key: :id
 
   has_many :contract,
     class_name: "Contract",
-    foreign_key: 'business_id',
+    foreign_key: :business_id,
+    primary_key: :id
+
+  has_many :projects,
+    class_name: "Project",
+    foreign_key: :business_id,
     primary_key: :id
 
   # we now have a method called industries_served_ids that takes in an array of ids

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :industries, only: [:index]
     resources :sectors, only: [:index]
+    resources :projects
   end
 
 end
