@@ -1,4 +1,5 @@
 class BusinessServicing < ApplicationRecord
+  validates :business, :industry, presence:true
 
   belongs_to :business,
     class_name: 'Business',

@@ -1,111 +1,122 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import VirtualizedSelect from 'react-virtualized-select';
-import 'react-select/dist/react-select.css';
-import 'react-virtualized/styles.css'
-import 'react-virtualized-select/styles.css'
+import BusinessSignUpOne from './business_signup_one';
+import BusinessSignUpTwo from './business_signup_two'
 
-// last two imports are for select-drop-down package
-// need css-loader and style-loader in webpack
+
+var fieldValues = {
+  firstname: "",
+  lastname: "",
+  organization: "",
+  industry_id: "",
+  email: "",
+  password: "",
+  website: ""
+}
 
 class BusinessSignUp extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      firstname: "",
-      lastname: "",
-      organization: "",
-      industry_id: "",
-      email: "",
-      password: "",
-      website: ""
+      step: 1
     }
 
-    this.hanleInput = this.handleInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.filterFields = this.filterFields.bind(this)
+    this.saveValues = this.saveValues.bind(this)
+    this.nextStep = this.nextStep.bind(this)
+    this.previousStep = this.previousStep.bind(this)
   }
 
   componentWillMount(){
     this.props.clearRegistrationErrors();
+    fieldValues = {
+        firstname: "",
+        lastname: "",
+        organization: "",
+        industry_id: "",
+        email: "",
+        password: "",
+        website: ""
+    }
   }
 
-  handleInput(field){
-    return (e) => (
-      this.setState({[field]: e.target.value})
-    )
+  handleSubmit(){
+    // e.preventDefault();
+    this.props.registerBusiness(fieldValues).then(()=>this.props.history.push('/'))
+
   }
 
-  handleSubmit(e){
+  saveValues(values){
+    fieldValues = Object.assign({}, fieldValues, values)
+  }
+
+
+  nextStep(){
+    this.props.registerBusiness(fieldValues)
+      .then(()=>this.setState({step: this.state.step + 1}),
+      (errors)=>{
+        let errorsArray = Object.keys(errors.errors)
+        if(errorsArray.length == 1){
+          this.setState({step: this.state.step + 1})
+        }
+      })
+  }
+
+  previousStep(e){
     e.preventDefault();
-    this.props.registerBusiness(this.state).then(()=>this.props.history.push('/'))
+    this.setState({step: this.state.step -1})
   }
 
-
-  checkForField(fieldError, field){
-    const errorFieldObject= eval(`this.props.errors.${fieldError}`);
-    if (errorFieldObject){
-      if(fieldError == "password"){
-        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
-      } else if(fieldError == 'email' && this.props.errors[fieldError][0] !== 'has already been taken'){
-        return <p>{field + " " + "is required"}</p>
-      } else if (fieldError == "email"){
-        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
-      } else {
-        return <p>{field + " " + "is required"}</p>
-      }
+  renderStep() {
+    switch(this.state.step){
+      case 1:
+        return (
+                <BusinessSignUpOne
+                      inputFields={fieldValues}
+                      nextStep={this.nextStep}
+                      previousStep={this.previousStep}
+                      clearRegistrationErrors={this.props.clearRegistrationErrors}
+                      saveValues={this.saveValues}
+                      industries={this.props.industries}
+                      errors={this.props.errors}/>
+        )
+      case 2:
+        return (
+                <BusinessSignUpTwo
+                      inputFields={fieldValues}
+                      nextStep={this.nextStep}
+                      previousStep={this.previousStep}
+                      clearRegistrationErrors={this.props.clearRegistrationErrors}
+                      saveValues={this.saveValues}
+                      industries={this.props.industries}
+                      errors={this.props.errors}
+                      handleSubmit={this.handleSubmit}/>
+        )
 
     }
   }
 
+  filterFields(){
+    const BusinessinputFields = ['firstname','lastname','organization',
+                                  'industry_id','email','password','website']
+    const stateKeys = Object.keys(this.state)
+    const filteredKeys = stateKeys.filter((key)=>BusinessinputFields.includes(key))
+    const newFieldsObject = filteredKeys.reduce((obj, key)=>{
+      obj[key] = ""
+      return obj
+    }, {})
+    return newFieldsObject;
+  }
+
   render() {
-    const industries = this.props.industries.map((industry)=>{
-      return {value: industry.id, label: industry.name}
-    })
-
     return (
-        <form className="sharedForm" onSubmit={this.handleSubmit}>
-          <div className="full-name-container-business">
-            <div className="first-name-container">
-              <label htmlFor="firstname">First Name</label>
-              <input onChange={this.handleInput('firstname')} id="firstname" placeholder="First name" type="text" value={this.state.firstname}/>
-              {this.checkForField('firstname', 'first name')}
-            </div>
-
-            <div className="last-name-container">
-              <label htmlFor="lastname">Last Name</label>
-              <input onChange={this.handleInput('lastname')} id="lastname" placeholder="Last name" type="text" value={this.state.lastname}/>
-              {this.checkForField('lastname', 'last name')}
-            </div>
-          </div>
-          <br />
-          <label htmlFor="organization">Business Name</label>
-          <input onChange={this.handleInput('organization')} id="organization" placeholder="Business name" type="text" value={this.state.organization}/>
-          {this.checkForField('organization', 'business name')}
-          <br />
-          <label htmlFor="industry">Industry</label>
-          <VirtualizedSelect autoFocus clearable={false} className="business-industry-options-bar" options={industries} value={this.state.industry_id} onChange={val=>this.setState({industry_id: val.value})} />
-
-          <br />
-          <label htmlFor="email">Business Email</label>
-          <input onChange={this.handleInput('email')} id="email" placeholder="you@your-email.com" type="text" value={this.state.email} />
-          {this.checkForField('email', 'email')}
-          <br />
-
-          <label htmlFor="website">Website</label>
-          <input onChange={this.handleInput('website')} id="website" placeholder="https://your-website.com" type="text" value={this.state.website} />
-          {this.checkForField('website', 'website')}
-          <br />
-
-          <label htmlFor="password">Password</label>
-          <input onChange={this.handleInput('password')} id="password" placeholder="Password" type="password" value={this.state.password}/>
-          {this.checkForField('password', 'password')}
-          <br />
-
-          <button className="submitButton">Create Account</button>
-
-        </form>
+      <div>
+        {this.renderStep()}
+      </div>
     )
+
   }
 
 }
