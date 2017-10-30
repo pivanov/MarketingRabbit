@@ -12,7 +12,8 @@ var fieldValues = {
   industry_id: "",
   email: "",
   password: "",
-  website: ""
+  website: "",
+  industries_served_ids: ""
 }
 
 class BusinessSignUp extends React.Component{
@@ -38,9 +39,16 @@ class BusinessSignUp extends React.Component{
         industry_id: "",
         email: "",
         password: "",
-        website: ""
+        website: "",
+        industries_served_ids: ""
     }
   }
+
+  // componentWillUnmount(){
+  //   window.onbeforeunload = function() {
+  //     return "Leaving this page will reset the wizard";
+  //   }
+  // }
 
   handleSubmit(){
     // e.preventDefault();
@@ -58,7 +66,7 @@ class BusinessSignUp extends React.Component{
       .then(()=>this.setState({step: this.state.step + 1}),
       (errors)=>{
         let errorsArray = Object.keys(errors.errors)
-        if(errorsArray.length == 1){
+        if(errorsArray.length == 2){
           this.setState({step: this.state.step + 1})
         }
       })
