@@ -15,12 +15,14 @@ class BusinessSignUpTwo extends React.Component{
     // this.state = Object.assign({}, this.props.inputFields)
     // this.handleInput = this.handleInput.bind(this)
     this.nextStep = this.nextStep.bind(this)
+    this.previousStep = this.previousStep.bind(this)
     this.handlIds = this.handlIds.bind(this)
   }
 
   componentWillMount(){
     this.props.clearRegistrationErrors();
-    this.props.inputFields.password = ""
+    this.props.inputFields.password = "",
+    this.setState({industries_served_ids: this.props.inputFields.industries_served_ids})
   }
 
   checkForField(fieldError, field){
@@ -42,10 +44,20 @@ class BusinessSignUpTwo extends React.Component{
   nextStep(e){
     e.preventDefault()
     var data = {
-      password: this.password.value
+      password: this.password.value,
+      industries_served_ids: this.state.industries_served_ids
     }
     this.props.saveValues(data)
     this.props.handleSubmit()
+  }
+
+  previousStep(e){
+    e.preventDefault()
+    var data = {
+      industries_served_ids: this.state.industries_served_ids
+    }
+    this.props.saveValues(data)
+    this.props.previousStep()
   }
 
   handlIds(ids){
@@ -59,7 +71,7 @@ class BusinessSignUpTwo extends React.Component{
 
     return (
       <form className="sharedForm">
-        <label htmlFor="industry">Industry</label>
+        <label htmlFor="industry">Which industries does your business mainly serve?</label>
         <VirtualizedSelect multi={true} autoFocus clearable={false} className="business-industry-options-bar" options={industries} value={this.state.industries_served_ids} onChange={val=>(this.handlIds(val))}/>
         <br/>
         <label htmlFor="password">Password</label>
@@ -67,7 +79,7 @@ class BusinessSignUpTwo extends React.Component{
         {this.checkForField('password', 'password')}
         <br />
         <button onClick={this.nextStep}>Submit</button>
-        <button onClick={this.props.previousStep}>Back</button>
+        <button onClick={this.previousStep}>Back</button>
       </form>
     )
   }

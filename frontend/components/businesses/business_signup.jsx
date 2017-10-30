@@ -5,6 +5,9 @@ import BusinessSignUpOne from './business_signup_one';
 import BusinessSignUpTwo from './business_signup_two'
 
 
+
+// implementing multi step form using uncontrolled Components
+// component architecture & progress bar inspired by @tommymarshall
 var fieldValues = {
   firstname: "",
   lastname: "",
@@ -52,8 +55,14 @@ class BusinessSignUp extends React.Component{
 
   handleSubmit(){
     // e.preventDefault();
-    this.props.registerBusiness(fieldValues).then(()=>this.props.history.push('/'))
-
+    if(fieldValues.industries_served_ids != "") {
+      const industryIdsArray = fieldValues.industries_served_ids.map((el)=>{
+        return el.value
+      })
+      const completeValues = Object.assign({}, fieldValues, {industries_served_ids: industryIdsArray})
+      this.props.registerBusiness(completeValues).then(()=>this.props.history.push('/'))
+    }
+    this.props.registerBusiness(fieldValues)
   }
 
   saveValues(values){
@@ -73,7 +82,7 @@ class BusinessSignUp extends React.Component{
   }
 
   previousStep(e){
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({step: this.state.step -1})
   }
 
@@ -119,8 +128,15 @@ class BusinessSignUp extends React.Component{
   }
 
   render() {
+    var style = {
+      width : (this.state.step / 2 * 100) + '%'
+    }
     return (
       <div>
+        <div className="progress-bar-container">
+          <span className="progress-step">Step {this.state.step}</span>
+          <progress className="progress-bar" style={style}></progress>
+        </div>
         {this.renderStep()}
       </div>
     )
