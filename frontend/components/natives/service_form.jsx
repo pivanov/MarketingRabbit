@@ -2,7 +2,7 @@ import React from 'react'
 
 
 var projectFields = {
-  business_id: ""
+  business_id: "",
   project_name: "",
   service_needed: "",
   service_needed_details: "",
@@ -85,7 +85,7 @@ class ServiceForm extends React.Component{
 
   render() {
     var style = {
-      width = (this.state.step / 4 * 100) + '%'
+      width: (this.state.step / 4 * 100) + '%'
     }
     return (
       <section className="service-form-page-container">

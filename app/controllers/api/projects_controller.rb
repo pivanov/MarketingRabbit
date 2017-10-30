@@ -33,7 +33,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.where("business_id = ?", params[:id])
+    @projects = Project.where("business_id = ?", params[:business_id])
     if @projects.length == 0
       render json: {no_projects: "No projects to display"}
     else
@@ -48,7 +48,6 @@ class Api::ProjectsController < ApplicationController
       :business_id,
       :project_name,
       :service_needed,
-      :service_needed_details,
       :service_needed_details,
       :project_start_date,
       :monthly_budget,

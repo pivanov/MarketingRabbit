@@ -12,6 +12,15 @@ class Api::UsersController < ApplicationController
 
   private
 
+  def show
+    @user = type_class.find(params[:id])
+    if @user
+      render 'api/users/show'
+    else
+      render json: {no_user: "couldn't find user"}, status: 404
+    end
+  end
+
   def user_params
     params.require(:user).permit(
       :email,
