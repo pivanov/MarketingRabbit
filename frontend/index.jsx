@@ -5,6 +5,8 @@ import { login, logout, registerBusiness, registerAgency } from './actions/sessi
 import configureStore from './store/store.js';
 import Root from './components/root';
 import * as APINativesUtil from './util/natives_api_util.js';
+import * as APIProjectsUtil from './util/projects_api_util';
+import * as projectsActions from './actions/project_actions'
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -18,6 +20,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     store = configureStore();
   }
   // TESTING
+  window.fetchProject = projectsActions.fetchProject;
+  window.createProject = projectsActions.createProject;
+  window.fetchProjects = projectsActions.fetchProjects;
+  window.updateProject = projectsActions.updateProject;
   window.fetchIndustries = APINativesUtil.fetchIndustries;
   window.fetchSectors = APINativesUtil.fetchSectors;
   window.registerBusiness = APIUtil.registerBusiness;

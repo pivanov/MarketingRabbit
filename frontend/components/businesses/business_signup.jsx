@@ -7,7 +7,7 @@ import BusinessSignUpTwo from './business_signup_two'
 
 
 // implementing multi step form using uncontrolled Components
-// component architecture & progress bar inspired by @tommymarshall
+// component architecture inspired by @tommymarshall
 var fieldValues = {
   firstname: "",
   lastname: "",
