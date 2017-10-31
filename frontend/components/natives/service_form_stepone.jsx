@@ -7,10 +7,18 @@ class ServiceFormStepOne extends React.Component{
 
   render() {
     return(
-      <div>
+      <div className="service-from-stepone-container">
         <h1>Let's get started</h1>
-        <label htmlFor="projectname">What will be the name of this project?</label>
-        <input id="projectname" type="text" />
+        <div className="service-from-stepone-content-container">
+          <div className="service-form-stepone-main-content">
+            <label htmlFor="projectname">What will be the name of this project?</label>
+            <br/>
+            <input id="projectname" type="text" />
+          </div>
+          <div className="stepone-button-container">
+            <button>Continue</button>
+          </div>
+        </div>
       </div>
     )
   }
