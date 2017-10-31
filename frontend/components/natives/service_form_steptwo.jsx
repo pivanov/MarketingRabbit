@@ -39,7 +39,7 @@ class ServiceFormStepTwo extends React.Component{
             <br/>
             <VirtualizedSelect autoFocus clearable={false} className="steptwo-service-options-bar" onChange={val=>(this.setState({service_needed: val.value}))}/>
             <label htmlFor="projectdescription">Please describe your project</label>
-            <textarea id="projectdescription" defaultValue={this.props.projectFields.service_needed_details} autofocus={true} placeholder="My company is situated in Mexico City, Mexico and we are looking for..."/>
+            <textarea id="projectdescription" defaultValue={this.props.projectFields.service_needed_details} placeholder="My company is situated in Mexico City, Mexico and we are looking for..."/>
           </div>
           <div className="steptwo-buttons-container">
             <button onClick={this.previousStep}>Back</button>
