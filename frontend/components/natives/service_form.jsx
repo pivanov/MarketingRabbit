@@ -1,5 +1,8 @@
 import React from 'react'
-
+import ServiceFormStepOne from './service_form_stepone';
+import ServiceFormStepTwo from './service_form_steptwo';
+import ServiceFormStepThree from './service_form_stepthree';
+import ServiceFormStepFour from './service_form_stepfour';
 
 var projectFields = {
   business_id: "",
@@ -15,8 +18,6 @@ var projectFields = {
   provider_id: ""
 }
 
-// need formErrors
-
 class ServiceForm extends React.Component{
   constructor(props) {
     super(props)
@@ -30,9 +31,10 @@ class ServiceForm extends React.Component{
     this.previousStep = this.previousStep.bind(this)
   }
 
-  componentWillMount(){
-    this.props.clearFormErrors();
+  componentDidMount(){
+    this.props.clearProjectErrors();
     projectFields = {
+      business_id: this.props.currentUser.id,
       project_name: "",
       service_needed: "",
       service_needed_details: "",
@@ -42,23 +44,25 @@ class ServiceForm extends React.Component{
       agency_preference: false,
       agency_type: "",
       agency_size: "",
-
     }
   }
 
   handleSubmit(){
-
+    this.props.createProject(projectFields)
+    // after successful creation of a project redirec to new project show page
   }
 
   saveValues(values){
     projectFields = Object.assign({}, projectFields, values)
   }
 
-  nextStep(){
+  nextStep(e){
+    e.preventDefault()
     this.setState({step: this.state.step + 1})
   }
 
-  previousStep(){
+  previousStep(e){
+    e.preventDefault()
     this.setState({step: this.state.step - 1})
   }
 
@@ -66,19 +70,44 @@ class ServiceForm extends React.Component{
     switch(this.state.step){
       case 1:
         return (
-          <ServiceFormProjectName />
+          <ServiceFormStepOne
+                projectFields={projectFields}
+                nextStep={this.nextStep}
+                previousStep={this.previousStep}
+                saveValues={this.saveValues}
+                clearProjectErrors={this.props.clearProjectErrors}
+                projectErrors={this.props.projectErrors}/>
         )
       case 2:
         return (
-          <ServiceFormProjectDetails />
+          <ServiceFormStepTwo
+                projectFields={projectFields}
+                nextStep={this.nextStep}
+                previousStep={this.previousStep}
+                saveValues={this.saveValues}
+                clearProjectErrors={this.props.clearProjectErrors}
+                projectErrors={this.props.projectErrors}/>
         )
       case 3:
         return (
-          <ServiceFormMoreProjectDetails />
+          <ServiceFormStepThree
+                projectFields={projectFields}
+                nextStep={this.nextStep}
+                previousStep={this.previousStep}
+                saveValues={this.saveValues}
+                clearProjectErrors={this.props.clearProjectErrors}
+                projectErrors={this.props.projectErrors}/>
         )
       case 4:
         return (
-          <ServiceFormPreferences />
+          <ServiceFormStepFour
+                projectFields={projectFields}
+                nextStep={this.nextStep}
+                previousStep={this.previousStep}
+                saveValues={this.saveValues}
+                clearProjectErrors={this.props.clearProjectErrors}
+                projectErrors={this.props.projectErrors}
+                handleSubmit={this.props.handleSubmit}/>
         )
     }
   }
@@ -91,10 +120,12 @@ class ServiceForm extends React.Component{
       <section className="service-form-page-container">
         <section className="service-form-progress-section-container">
           <span className="service-form-progress-step">Step {this.state.step}</span>
-          <progess className="service-form-progress-bar" style={style}></progess>
+          <progress className="service-form-progress-bar" style={style}></progress>
         </section>
         <section className="service-form-content-main-container">
-          {this.renderStep()}
+          <form className="service-form-shared-form">
+            {this.renderStep()}
+          </form>
         </section>
       </section>
     )

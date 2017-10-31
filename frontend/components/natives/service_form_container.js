@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import ServiceForm from './service_form';
+import { receiveProjectErrors, createProject } from '../../actions/project_actions';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = (state) => ({
+  currentUser: state.session.currentUser,
+  projectErrors: state.errors.projects
 })
 
 
-const mapDispatchToProps = () => ({
-
+const mapDispatchToProps = (dispatch) => ({
+  clearProjectErrors: () => dispatch(receiveProjectErrors([])),
+  createProject: (project) => dispatch(createProject(project))
 })
 
 
