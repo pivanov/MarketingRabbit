@@ -53,9 +53,7 @@ class ServiceForm extends React.Component{
   }
 
   saveValues(values){
-    debugger
     projectFields = Object.assign({}, projectFields, values)
-    debugger
   }
 
   nextStep(){
