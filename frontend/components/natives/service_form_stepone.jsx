@@ -8,7 +8,9 @@ class ServiceFormStepOne extends React.Component{
   render() {
     return(
       <div>
-        <h1>Hello</h1>
+        <h1>Let's get started</h1>
+        <label htmlFor="projectname">What will be the name of this project?</label>
+        <input id="projectname" type="text" />
       </div>
     )
   }

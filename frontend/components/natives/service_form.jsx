@@ -118,15 +118,19 @@ class ServiceForm extends React.Component{
     }
     return (
       <section className="service-form-page-container">
-        <section className="service-form-progress-section-container">
-          <span className="service-form-progress-step">Step {this.state.step}</span>
-          <progress className="service-form-progress-bar" style={style}></progress>
-        </section>
-        <section className="service-form-content-main-container">
-          <form className="service-form-shared-form">
-            {this.renderStep()}
-          </form>
-        </section>
+        <div className="service-form-top-level-content-container">
+          <section className="service-form-progress-section-container">
+            <span className="service-form-progress-step">Step {this.state.step}</span>
+            <div className="service-form-progress-bar">
+              <span style={style}></span>
+            </div>
+          </section>
+          <section className="service-form-content-main-container">
+            <form className="service-form-shared-form">
+              {this.renderStep()}
+            </form>
+          </section>
+        </div>
       </section>
     )
   }
