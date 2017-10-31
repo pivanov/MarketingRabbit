@@ -47,7 +47,7 @@ class Api::ProjectsController < ApplicationController
     params.require(:project).permit(
       :business_id,
       :project_name,
-      :service_needed,
+      :service_needed_id,
       :service_needed_details,
       :project_start_date,
       :monthly_budget,

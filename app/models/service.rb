@@ -12,5 +12,4 @@ class Service < ApplicationRecord
   has_many :agency_providers,
     through: :service_provider_listings,
     source: :agency
-
 end

@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  validates :business_id, :project_name, :service_needed, :service_needed_details, presence:true
+  validates :business_id, :project_name, :service_needed_id, :service_needed_details, presence:true
   validates :project_start_date, :monthly_budget, presence:true
   validates :agency_preference, :location_preference, inclusion: { in: [true, false] }
   validate :ensure_valid_date
