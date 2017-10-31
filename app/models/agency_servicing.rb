@@ -1,4 +1,5 @@
 class AgencyServicing < ApplicationRecord
+  validates :sector, :agency, presence: true
 
   belongs_to :sector,
     class_name: 'Sector',
@@ -9,5 +10,5 @@ class AgencyServicing < ApplicationRecord
     class_name: 'Agency',
     foreign_key: :agency_id,
     primary_key: :id
-    
+
 end

@@ -16,6 +16,11 @@ class Project < ApplicationRecord
     primary_key: :id,
     optional: true
 
+  belongs_to :service_needed,
+    class_name: 'Service',
+    foreign_key: :service_needed_id,
+    primary_key: :id
+
   def ensure_valid_date
     if project_start_date.present? && project_start_date < Date.today
       errors.add(:project_start_date, "Invalid start date")

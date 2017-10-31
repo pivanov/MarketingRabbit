@@ -26,3 +26,9 @@ File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
   end
   Industry.create({name: industry, sector_id: sector_id})
 end
+
+
+File.forEach(File.join(Rails.root, 'db', 'services.txt')) do |line|
+  service = line.chomp
+  Service.create({name: service})
+end
