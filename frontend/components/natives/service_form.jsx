@@ -56,8 +56,7 @@ class ServiceForm extends React.Component{
     projectFields = Object.assign({}, projectFields, values)
   }
 
-  nextStep(e){
-    e.preventDefault()
+  nextStep(){
     this.setState({step: this.state.step + 1})
   }
 
@@ -73,7 +72,6 @@ class ServiceForm extends React.Component{
           <ServiceFormStepOne
                 projectFields={projectFields}
                 nextStep={this.nextStep}
-                previousStep={this.previousStep}
                 saveValues={this.saveValues}
                 clearProjectErrors={this.props.clearProjectErrors}
                 projectErrors={this.props.projectErrors}/>

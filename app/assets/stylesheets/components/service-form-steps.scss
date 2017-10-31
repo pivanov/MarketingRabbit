@@ -1,36 +1,43 @@
-.service-from-stepone-container{
+.service-form-steps-container{
   height: 100%;
 }
 
-.service-from-stepone-container h1{
+.service-form-steps-container > h1{
   font-weight: bold;
   font-size: 30px;
   border-bottom: 2px solid $pure-orange;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 
-.service-from-stepone-content-container{
+.service-form-steps-content-container{
   display: grid;
   height: 90%;
   grid-template-columns: 1fr;
   grid-template-rows: 20% 20% 20% 20% 20%;
+  // border: 1px solid black;
 }
 
-.service-form-stepone-main-content{
+.service-form-steps-main-content{
   grid-row: 2/5;
   grid-column: 1/4
 }
 
 
-.service-from-stepone-content-container label{
+.service-form-steps-main-content > label{
   font-size: 20px;
   font-weight: lighter;
 }
 
-.service-from-stepone-content-container input{
-  padding-top: 20px;
+.service-form-steps-main-content > input{
+  padding-top: 18px;
   width: 100%;
+}
+
+.service-form-steps-main-content > p {
+  font-size: 16px;
+  font-weight: normal;
+  padding-top: 14px;
 }
 
 .stepone-button-container{
@@ -39,7 +46,43 @@
   justify-content: flex-end;
 }
 
-.stepone-button-container button{
+.stepone-button-container > button{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-right: 30px;
+  padding-left: 30px;
+  color: white;
+  text-transform: uppercase;
+  background-color: $pure-orange;
+}
+
+
+// =========STEP 2
+
+.steptwo-buttons-container{
+  grid-row: 5/6;
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-form-steptwo-main-content{
+  grid-row: 1/5;
+  display: flex;
+  flex-direction: column;
+}
+
+.steptwo-service-options-bar{
+  margin-bottom: 30px
+}
+
+.service-form-steptwo-main-content > textarea{
+  resize: none;
+  border: 3px solid #cccccc;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.steptwo-buttons-container button{
   margin-top: 25px;
   margin-bottom: 25px;
   padding-right: 30px;
