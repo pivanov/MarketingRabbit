@@ -22,7 +22,7 @@ class ServiceFormStepOne extends React.Component{
       <div className="service-form-steps-container">
         <h1>Let's get started</h1>
         <div className="service-form-steps-content-container">
-          <div className="service-form-steps-main-content">
+          <div className="service-form-stepone-main-content">
             <label htmlFor="projectname">What will be the name of this project?</label>
             <p>try to be as descriptive as possible</p>
             <br/>

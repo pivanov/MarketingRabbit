@@ -7,7 +7,7 @@ import ServiceFormStepFour from './service_form_stepfour';
 var projectFields = {
   business_id: "",
   project_name: "",
-  service_needed: "",
+  service_needed_id: "",
   service_needed_details: "",
   project_start_date: "",
   monthly_budget: "",
@@ -36,7 +36,7 @@ class ServiceForm extends React.Component{
     projectFields = {
       business_id: this.props.currentUser.id,
       project_name: "",
-      service_needed: "",
+      service_needed_id: "",
       service_needed_details: "",
       project_start_date: "",
       monthly_budget: "",
@@ -49,19 +49,20 @@ class ServiceForm extends React.Component{
 
   handleSubmit(){
     this.props.createProject(projectFields)
-    // after successful creation of a project redirec to new project show page
+    // after successful creation of a project redirect to dashboard or new project show page
   }
 
   saveValues(values){
+    debugger
     projectFields = Object.assign({}, projectFields, values)
+    debugger
   }
 
   nextStep(){
     this.setState({step: this.state.step + 1})
   }
 
-  previousStep(e){
-    e.preventDefault()
+  previousStep(){
     this.setState({step: this.state.step - 1})
   }
 
@@ -80,6 +81,7 @@ class ServiceForm extends React.Component{
         return (
           <ServiceFormStepTwo
                 projectFields={projectFields}
+                services={this.props.services}
                 nextStep={this.nextStep}
                 previousStep={this.previousStep}
                 saveValues={this.saveValues}
@@ -118,7 +120,7 @@ class ServiceForm extends React.Component{
       <section className="service-form-page-container">
         <div className="service-form-top-level-content-container">
           <section className="service-form-progress-section-container">
-            <span className="service-form-progress-step">Step {this.state.step}</span>
+            <span className="service-form-progress-step">Project form</span>
             <div className="service-form-progress-bar">
               <span style={style}></span>
             </div>

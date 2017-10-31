@@ -11,3 +11,10 @@ export const fetchSectors = ()=>{
     url: 'api/sectors'
   })
 }
+
+export const fetchServices = ()=>{
+  return $.ajax({
+    method: "GET",
+    url: 'api/services'
+  })
+}

@@ -6,7 +6,8 @@ import configureStore from './store/store.js';
 import Root from './components/root';
 import * as APINativesUtil from './util/natives_api_util.js';
 import * as APIProjectsUtil from './util/projects_api_util';
-import * as projectsActions from './actions/project_actions'
+import * as projectsActions from './actions/project_actions';
+import { fetchServices } from './actions/natives_actions'
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     store = configureStore();
   }
   // TESTING
+  window.fetchServices = fetchServices;
   window.fetchProject = projectsActions.fetchProject;
   window.createProject = projectsActions.createProject;
   window.fetchProjects = projectsActions.fetchProjects;

@@ -18,23 +18,23 @@
   // border: 1px solid black;
 }
 
-.service-form-steps-main-content{
+.service-form-stepone-main-content{
   grid-row: 2/5;
   grid-column: 1/4
 }
 
 
-.service-form-steps-main-content > label{
+.service-form-stepone-main-content > label{
   font-size: 20px;
   font-weight: lighter;
 }
 
-.service-form-steps-main-content > input{
+.service-form-stepone-main-content > input{
   padding-top: 18px;
   width: 100%;
 }
 
-.service-form-steps-main-content > p {
+.service-form-stepone-main-content > p {
   font-size: 16px;
   font-weight: normal;
   padding-top: 14px;
@@ -59,30 +59,41 @@
 
 // =========STEP 2
 
-.steptwo-buttons-container{
+.steps-buttons-container{
   grid-row: 5/6;
   display: flex;
   justify-content: space-between;
 }
 
-.service-form-steptwo-main-content{
+.service-form-steps-main-content{
   grid-row: 1/5;
   display: flex;
   flex-direction: column;
+}
+
+.service-form-steps-main-content > label {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.service-form-steps-main-content > p{
+  font-size: 16px;
+  font-weight: normal;
+  padding-top: 14px;
 }
 
 .steptwo-service-options-bar{
   margin-bottom: 30px
 }
 
-.service-form-steptwo-main-content > textarea{
+.service-form-steps-main-content > textarea{
   resize: none;
   border: 3px solid #cccccc;
   height: 200px;
   margin-top: 20px;
 }
 
-.steptwo-buttons-container button{
+.steps-buttons-container button{
   margin-top: 25px;
   margin-bottom: 25px;
   padding-right: 30px;
@@ -90,4 +101,24 @@
   color: white;
   text-transform: uppercase;
   background-color: $pure-orange;
+}
+
+// ==============step 3
+
+.stepthree-date-container{
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  // border: 1px solid black;
+  display: flex;
+  // justify-content: center;
+  font-size: 17px;
+}
+
+.stepthree-date-container > input {
+  max-width: 500px;
+}
+
+.stepthree-budget-bar{
+  margin-top: 20px;
 }

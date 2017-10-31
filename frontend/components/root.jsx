@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import App from './app';
-import { fetchIndustries, fetchSectors } from '../actions/natives_actions'
+import { fetchIndustries, fetchSectors, fetchServices } from '../actions/natives_actions'
 // const Root = ({ store }) => (
 //   <Provider store={ store }>
 //     <HashRouter>
@@ -20,6 +20,7 @@ class Root extends React.Component{
   componentDidMount(){
     this.props.store.dispatch(fetchSectors())
     this.props.store.dispatch(fetchIndustries())
+    this.props.store.dispatch(fetchServices())
   }
 
   render(){

@@ -4,7 +4,8 @@ import { receiveProjectErrors, createProject } from '../../actions/project_actio
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
-  projectErrors: state.errors.projects
+  projectErrors: state.errors.projects,
+  services: state.entities.services
 })
 
 
