@@ -34,7 +34,9 @@ class Api::UsersController < ApplicationController
       :city,
       :country,
       :zipcode,
-      industries_served_ids: []
+      industries_served_ids: [],
+      service_ids: [],
+      vertical_ids: []
     )
   end
 

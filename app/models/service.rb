@@ -1,5 +1,5 @@
 class Service < ApplicationRecord
-  validates :name, :presence:true
+  validates :name, presence:true
   validates :name, uniqueness:true
 
   has_many :service_provider_listings,
