@@ -1,7 +1,8 @@
 class Business < User
   # validations for when a business is created
   validates :industry_id, presence:true
-  validates :industries_served_ids, presence:true, if: :is_b2b?
+  validates :business_type, presence:true 
+  # validates :industries_served_ids, presence:true, if: :is_b2b?
 
   before_destroy :destroy_projects
 
@@ -31,9 +32,9 @@ class Business < User
     self.projects.destroy_all
   end
 
-  def is_b2b?
-    self.business_type == 'B2B'
-  end
+  # def is_b2b?
+  #   self.business_type == 'B2B'
+  # end
 
   # we now have a method called industries_served_ids that takes in an array of ids
   has_many :industries_served, through: :business_servicings, source: :industry

@@ -16,7 +16,8 @@ var fieldValues = {
   email: "",
   password: "",
   website: "",
-  industries_served_ids: ""
+  industries_served_ids: "",
+  business_type: "B2B"
 }
 
 class BusinessSignUp extends React.Component{
@@ -43,7 +44,8 @@ class BusinessSignUp extends React.Component{
         email: "",
         password: "",
         website: "",
-        industries_served_ids: ""
+        industries_served_ids: "",
+        business_type: "B2B"
     }
   }
 
@@ -75,7 +77,7 @@ class BusinessSignUp extends React.Component{
       .then(()=>this.setState({step: this.state.step + 1}),
       (errors)=>{
         let errorsArray = Object.keys(errors.errors)
-        if(errorsArray.length == 2){
+        if(errorsArray.length == 1){
           this.setState({step: this.state.step + 1})
         }
       })
