@@ -30,10 +30,9 @@ class Api::UsersController < ApplicationController
       :organization,
       :industry_id,
       :website,
-      :state,
       :city,
-      :country,
-      :zipcode,
+      :business_type,
+      :logo_file_name,
       industries_served_ids: [],
       service_ids: [],
       vertical_ids: []

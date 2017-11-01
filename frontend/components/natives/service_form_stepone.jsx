@@ -26,7 +26,7 @@ class ServiceFormStepOne extends React.Component{
             <label htmlFor="projectname">What will be the name of this project?</label>
             <p>try to be as descriptive as possible</p>
             <br/>
-            <input id="projectname" type="text" ref={(input)=>this.projectname=input} defaultValue={this.props.projectFields.project_name}/>
+            <input id="projectname" type="text" placeholder="Social media marketing campaign for new product launch in China..." ref={(input)=>this.projectname=input} defaultValue={this.props.projectFields.project_name}/>
           </div>
           <div className="stepone-button-container">
             <button onClick={this.nextStep}>Continue</button>

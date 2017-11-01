@@ -1,6 +1,7 @@
 class Api::ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
+    debugger
     if @project.save
       render 'api/projects/show'
     else
@@ -52,7 +53,7 @@ class Api::ProjectsController < ApplicationController
       :project_start_date,
       :monthly_budget,
       :location_preference,
-      :agency_location_preference
+      :agency_location_preference,
       :agency_preference,
       :agency_type_preference,
       :provider_id

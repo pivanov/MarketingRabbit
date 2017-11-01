@@ -18,7 +18,7 @@ class AgencyFirstForm extends React.Component{
   componentWillMount(){
     this.props.clearRegistrationErrors();
   }
-  
+
   handleSubmit(e){
     e.preventDefault();
     this.props.registerAgency(this.state).then(()=>this.history.push('/'))
@@ -46,13 +46,19 @@ class AgencyFirstForm extends React.Component{
       return (
       <section className="agency-first-form-container">
         <form onSubmit={this.handleSubmit} className='agencyFirstForm'>
-          <label htmlFor="agencyRepFname">First name</label>
-          <input id="agencyRepFname" onChange={this.handleInput('firstname')} placeholder="Firstname" value={this.state.firstname}/>
-          {this.checkForField('firstname', 'first name')}
-          <br/>
-          <label htmlFor="agencyRepLname">Last name</label>
-          <input id="agencyRepLname" onChange={this.handleInput('lastname')} placeholder="Last name" value={this.state.lastname}/>
-          {this.checkForField('lastname', 'last name')}
+            <div className="full-name-container-agency">
+              <div className="first-name-container-agency">
+                <label htmlFor="agencyRepFname">First name</label>
+                <input id="agencyRepFname" onChange={this.handleInput('firstname')} placeholder="Firstname" value={this.state.firstname}/>
+                {this.checkForField('firstname', 'first name')}
+              </div>
+
+              <div className="last-name-container-agency">
+                <label htmlFor="agencyRepLname">Last name</label>
+                <input id="agencyRepLname" onChange={this.handleInput('lastname')} placeholder="Last name" value={this.state.lastname}/>
+                {this.checkForField('lastname', 'last name')}
+              </div>
+            </div>
           <br/>
           <label htmlFor="agencyRepEmail">Best Email</label>
           <input id="agencyRepEmail" onChange={this.handleInput('email')} placeholder="you@your-email.com" value={this.state.email}/>
@@ -62,8 +68,8 @@ class AgencyFirstForm extends React.Component{
           <input id="agencyName" onChange={this.handleInput('organization')} placeholder="Agency name" value={this.state.organization}/>
           {this.checkForField('organization', 'agency name')}
           <br />
-          <label htmlFor="agencyRepPassword">Password</label>
-          <input id="agencyRepPassword" type="password" onChange={this.handleInput('password')} placeholder="Password" value={this.state.password}/>
+          <label htmlFor="website">Password</label>
+          <input id="website" type="password" onChange={this.handleInput('password')} placeholder="Password" value={this.state.password}/>
           {this.checkForField('password', 'password')}
           <button>Continue Registration</button>
         </form>

@@ -94,7 +94,7 @@ class ServiceFormStepFour extends React.Component{
       agency_type_preference: this.state.agency_type_preference
     }
     this.props.saveValues(data)
-    this.props.nextStep()
+    this.props.handleSubmit()
   }
 
   render() {
@@ -118,7 +118,7 @@ class ServiceFormStepFour extends React.Component{
             <br/>
             <label>Do you have any agency preferences? (full-service or specialist)</label>
             <div className="radiobutton-container">
-              <RadioGroup onChange={this.handleSecondRadioButtons} value={`${this.props.projectFields.agency_preference}`} vertical>
+              <RadioGroup onChange={this.handleSecondRadioButtons} value={`${this.props.projectFields.agency_preference}`} >
                 <RadioButton value='false' pointColor='#313333'>
                   No
                 </RadioButton>

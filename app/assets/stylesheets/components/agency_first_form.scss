@@ -23,3 +23,19 @@
   margin: 0 auto;
   color: red;
 }
+
+.full-name-container-agency{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1em;
+}
+
+.first-name-container-agency{
+  display: flex;
+  flex-direction: column;
+}
+
+.last-name-container-agency{
+  display: flex;
+  flex-direction: column;
+}

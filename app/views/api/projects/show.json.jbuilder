@@ -7,7 +7,7 @@ json.extract! @project,
 :project_start_date,
 :monthly_budget,
 :location_preference,
-:agency_location_preference
+:agency_location_preference,
 :agency_preference,
 :agency_type_preference,
 :provider_id

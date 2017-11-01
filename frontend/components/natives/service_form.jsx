@@ -31,8 +31,7 @@ class ServiceForm extends React.Component{
     this.previousStep = this.previousStep.bind(this)
   }
 
-  componentDidMount(){
-    this.props.clearProjectErrors();
+  componentWillMount(){
     projectFields = {
       business_id: this.props.currentUser.id,
       project_name: "",
@@ -49,7 +48,7 @@ class ServiceForm extends React.Component{
   }
 
   handleSubmit(){
-    this.props.createProject(projectFields)
+    this.props.createProject(projectFields).then(()=>this.props.history.push('/'))
     // after successful creation of a project redirect to dashboard or new project show page
   }
 
@@ -106,7 +105,7 @@ class ServiceForm extends React.Component{
                 saveValues={this.saveValues}
                 clearProjectErrors={this.props.clearProjectErrors}
                 projectErrors={this.props.projectErrors}
-                handleSubmit={this.props.handleSubmit}/>
+                handleSubmit={this.handleSubmit}/>
         )
     }
   }
