@@ -12,9 +12,9 @@ var projectFields = {
   project_start_date: "",
   monthly_budget: "",
   location_preference: false,
+  agency_location_preference: "",
   agency_preference: false,
-  agency_type: "",
-  agency_size: "",
+  agency_type_preference: "",
   provider_id: ""
 }
 
@@ -41,9 +41,10 @@ class ServiceForm extends React.Component{
       project_start_date: "",
       monthly_budget: "",
       location_preference: false,
+      agency_location_preference: "",
       agency_preference: false,
-      agency_type: "",
-      agency_size: "",
+      agency_type_preference: "",
+      provider_id: ""
     }
   }
 
