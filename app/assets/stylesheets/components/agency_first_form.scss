@@ -6,7 +6,9 @@
 }
 
 .agencyFirstForm button {
-  margin: 20px;
+  // margin: 20px;
+  margin-top: 20px;
+  width: 100%;
   text-align:center;
   background-color: $pure-orange;
   color:white;
@@ -15,12 +17,11 @@
 }
 
 .agencyFirstForm input {
-  height: 50px;
+  margin-top: 15px;
   border-bottom: 1px solid $light-grey;
 }
 
 .agencyFirstForm p{
-  margin: 0 auto;
   color: red;
 }
 

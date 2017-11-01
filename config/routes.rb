@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :industries, only: [:index]
     resources :sectors, only: [:index]
     resources :services, only: [:index]
+    resources :cities, only: [:index]
   end
 
 end

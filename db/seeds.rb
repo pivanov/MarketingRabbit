@@ -7,28 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-sectors_array = []
-File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
-  sectors_array << line.chomp
-end
+# sectors_array = []
+# File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
+#   sectors_array << line.chomp
+# end
+#
+# sectors_array.each do |sector|
+#   Sector.create({name: sector})
+# end
+#
+#
+# sector_id = nil
+# File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
+#   industry = line.chomp
+#   if sectors_array.include?(industry)
+#     sector_id = Sector.find_by(name: industry).id
+#     next
+#   end
+#   Industry.create({name: industry, sector_id: sector_id})
+# end
+#
+#
+# File.foreach(File.join(Rails.root, 'db', 'services.txt')) do |line|
+#   service = line.chomp
+#   Service.create({name: service})
+# end
 
-sectors_array.each do |sector|
-  Sector.create({name: sector})
-end
 
-
-sector_id = nil
-File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
-  industry = line.chomp
-  if sectors_array.include?(industry)
-    sector_id = Sector.find_by(name: industry).id
-    next
-  end
-  Industry.create({name: industry, sector_id: sector_id})
-end
-
-
-File.foreach(File.join(Rails.root, 'db', 'services.txt')) do |line|
-  service = line.chomp
-  Service.create({name: service})
+File.foreach(File.join(Rails.root, 'db', 'cities.txt')) do |line|
+  city_and_country = line.chomp.split(',')
+  City.create({name: city_and_country[0], country: city_and_country[1]})
 end

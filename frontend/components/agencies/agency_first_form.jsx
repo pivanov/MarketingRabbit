@@ -9,7 +9,7 @@ class AgencyFirstForm extends React.Component{
       lastname: "",
       email: "",
       organization: "",
-      password: ""
+      website: ""
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,10 +19,27 @@ class AgencyFirstForm extends React.Component{
     this.props.clearRegistrationErrors();
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.registerAgency(this.state).then(()=>this.history.push('/'))
-  }
+  // handleSubmit(e){
+  //   e.preventDefault();
+  //   this.props.registerAgency(this.state).then(()=>this.history.push('/'),
+  //       (errors)=>{
+  //         let errorsArray = Object.keys(errors.errors)
+  //         if(errorsArray.length == 3){
+  //           this.props.history.push({
+  //             pathname: '/register/agency/form',
+  //             state: {
+  //               firstname: this.state.firstname,
+  //               lastname: this.state.lastname,
+  //               email: this.state.email,
+  //               organization: this.state.organization,
+  //               website: this.state.website
+  //             }
+  //           })
+  //         }
+  //         // some conditional statement
+  //         // when passed, redirect to sign up page step 2 with props
+  //       })
+  // }
 
   handleInput(field){
     return (e) => {
@@ -68,9 +85,9 @@ class AgencyFirstForm extends React.Component{
           <input id="agencyName" onChange={this.handleInput('organization')} placeholder="Agency name" value={this.state.organization}/>
           {this.checkForField('organization', 'agency name')}
           <br />
-          <label htmlFor="website">Password</label>
-          <input id="website" type="password" onChange={this.handleInput('password')} placeholder="Password" value={this.state.password}/>
-          {this.checkForField('password', 'password')}
+          <label htmlFor="website">Website</label>
+          <input id="website" type="text" onChange={this.handleInput('website')} placeholder="https://your-website.com" value={this.state.website}/>
+          {this.checkForField('website', 'website')}
           <button>Continue Registration</button>
         </form>
       </section>

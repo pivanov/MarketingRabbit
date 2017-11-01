@@ -1,0 +1,30 @@
+Tokyo,Japan
+Dehli,India
+Shanghai,China
+Mexico City,Mexico
+São Paulo,Brazil
+Mumbai,India
+Osaka,Japan
+Beijing,China
+New York,United States
+Cairo,Egypt
+Dhaka,Bangladesh
+Karachi,Pakistan
+Buenos Aires,Argentina
+Kolkata,India
+Istanbul,Turkey
+Chongqing,China
+Rio de Janeiro,Brazil
+Manila,Philippines
+Lagos,Nigeria
+Los Angeles,United States
+Moscow,Russia
+Guangzhou,China
+Kinshasa,Democratic Republic of the Congo
+Tianjin,China
+Paris,France
+Shenzhen,China
+London,United Kingdom
+Jakarta,Indonesia
+Seoul,South Korea
+Lima,Peru

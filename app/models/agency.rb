@@ -1,5 +1,5 @@
 class Agency < User
-  validates :service_ids, :website, :city, :vertical_ids, presence:true
+  validates :service_ids, :website, :city_id, :vertical_ids, presence:true
   # has_many :contracts,
   #   class_name: 'Contract',
   #   foreign_key: :agency_id,
