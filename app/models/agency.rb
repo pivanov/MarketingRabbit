@@ -20,6 +20,12 @@ class Agency < User
     dependent: :destroy,
     inverse_of: :agency
 
+  belongs_to :city,
+    class_name: "City",
+    foreign_key: :city_id,
+    primary_key: :id
+
+
   # we now have a method called vertical_ids
   has_many :verticals, through: :agency_servicings, source: :sector
 

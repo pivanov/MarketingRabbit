@@ -3,7 +3,10 @@ import AgencyRegistrationProcess from './agency_registration_process';
 import { registerAgency, receiveRegistrationErrors } from '../../actions/registration_actions'
 
 const mapStateToProps = (state) => ({
-  errors: state.errors.registration
+  errors: state.errors.registration,
+  cities: state.entities.cities,
+  services: state.entities.services,
+  sectors: state.entities.sectors
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,4 +17,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AgencyRegisterSplashPage)
+)(AgencyRegistrationProcess)

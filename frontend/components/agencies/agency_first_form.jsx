@@ -4,20 +4,14 @@ import { withRouter } from 'react-router-dom';
 class AgencyFirstForm extends React.Component{
   constructor(props){
     super(props)
-    this.state = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      organization: "",
-      website: ""
-    }
-    this.handleInput = this.handleInput.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+
+    this.nextStep = this.nextStep.bind(this)
+    this.checkForField = this.checkForField.bind(this)
   }
 
-  componentWillMount(){
-    this.props.clearRegistrationErrors();
-  }
+  // componentWillMount(){
+  //   this.props.clearRegistrationErrors();
+  // }
 
   // handleSubmit(e){
   //   e.preventDefault();
@@ -41,11 +35,11 @@ class AgencyFirstForm extends React.Component{
   //       })
   // }
 
-  handleInput(field){
-    return (e) => {
-      this.setState({[field]: e.target.value})
-    }
-  }
+  // handleInput(field){
+  //   return (e) => {
+  //     this.setState({[field]: e.target.value})
+  //   }
+  // }
 
   checkForField(fieldError, field){
     const errorFieldObject= eval(`this.props.errors.${fieldError}`);
@@ -58,35 +52,52 @@ class AgencyFirstForm extends React.Component{
     }
   }
 
+  nextStep(e){
+    e.preventDefault()
+    const data ={
+      firstname: this.firstname.value,
+      lastname: this.lastname.value,
+      email: this.email.value,
+      organization: this.organization.value,
+      website: this.website.value
+    }
+    // a possible validation for multi-step form completion in the frontend
+    // let current_data_keys = Object.keys(data)
+    // iterate through all the values in the data variable and ensure none of them are empty
+
+    this.props.saveValues(data)
+    this.props.nextStep()
+  }
+
 
   render(){
       return (
       <section className="agency-first-form-container">
-        <form onSubmit={this.handleSubmit} className='agencyFirstForm'>
+        <form onSubmit={this.nextStep} className='agencyFirstForm'>
             <div className="full-name-container-agency">
               <div className="first-name-container-agency">
                 <label htmlFor="agencyRepFname">First name</label>
-                <input id="agencyRepFname" onChange={this.handleInput('firstname')} placeholder="Firstname" value={this.state.firstname}/>
+                <input id="agencyRepFname" ref={(input)=>this.firstname=input} placeholder="Firstname" defaultValue={this.props.agencyFields.firstname}/>
                 {this.checkForField('firstname', 'first name')}
               </div>
 
               <div className="last-name-container-agency">
                 <label htmlFor="agencyRepLname">Last name</label>
-                <input id="agencyRepLname" onChange={this.handleInput('lastname')} placeholder="Last name" value={this.state.lastname}/>
+                <input id="agencyRepLname" ref={(input)=>this.lastname=input} placeholder="Last name" defaultValue={this.props.agencyFields.lastname}/>
                 {this.checkForField('lastname', 'last name')}
               </div>
             </div>
           <br/>
           <label htmlFor="agencyRepEmail">Best Email</label>
-          <input id="agencyRepEmail" onChange={this.handleInput('email')} placeholder="you@your-email.com" value={this.state.email}/>
+          <input id="agencyRepEmail" ref={(input)=>this.email=input} placeholder="you@your-email.com" defaultValue={this.props.agencyFields.email}/>
           {this.checkForField('email', 'email')}
           <br />
           <label htmlFor="agencyName">Agency Name</label>
-          <input id="agencyName" onChange={this.handleInput('organization')} placeholder="Agency name" value={this.state.organization}/>
+          <input id="agencyName" ref={(input)=>this.organization=input} placeholder="Agency name" defaultValue={this.props.agencyFields.organization}/>
           {this.checkForField('organization', 'agency name')}
           <br />
           <label htmlFor="website">Website</label>
-          <input id="website" type="text" onChange={this.handleInput('website')} placeholder="https://your-website.com" value={this.state.website}/>
+          <input id="website" type="text" ref={(input)=>this.website=input} placeholder="https://your-website.com" defaultValue={this.props.agencyFields.website}/>
           {this.checkForField('website', 'website')}
           <button>Continue Registration</button>
         </form>

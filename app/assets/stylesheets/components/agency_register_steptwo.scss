@@ -1,0 +1,59 @@
+.agency-register-steptwo-container{
+  background-color: $lightest-grey;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agency-register-steptwo-main-content-container h1{
+  font-size: 25px;
+  font-weight: bold;
+  // padding: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid $pure-orange;
+  margin-bottom: 20px;
+  // text-align: left;
+}
+
+
+.agency-register-steptwo-main-content-container{
+  height: 80%;
+  width: 100%;
+}
+
+
+.agency-register-steptwo-third-level-container{
+  height: 85%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+  background-color: white;
+}
+
+.agency-register-steptwo-form button{
+  width: 100%;
+  text-align: center;
+  background: $pure-orange;
+  color: white;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.agency-signup-step-two-bars{
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.agency-register-steptwo-content-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.agency-register-steptwo-content-container input{
+  margin-top: 15px;
+  border-bottom: 1px solid $light-grey;
+}
