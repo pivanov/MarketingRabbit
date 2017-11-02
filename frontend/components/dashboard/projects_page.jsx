@@ -1,5 +1,6 @@
-import React from 'react'
-// import ProjectIndexItem from 'project_index_item'
+import React from 'react';
+import ProjectIndexItem from './project_index_item';
+import LazyLoad from 'react-lazyload';
 
 class ProjectsPage extends React.Component{
   constructor(props){
@@ -21,7 +22,6 @@ class ProjectsPage extends React.Component{
   }
 
   renderProjects(){
-    debugger
     if (this.state.projects_list.length == 0){
       return(
         <div className="no-projects-response">
@@ -31,22 +31,24 @@ class ProjectsPage extends React.Component{
       )
     } else {
       let projectsArray = Object.values(this.state.projects_list)
-      debugger
       let projects = projectsArray.map((obj)=>{
-        return <li key={obj.id}>{obj.project_name}</li>
+        return (
+          <LazyLoad height={400} once key={obj.id} offset={400}>
+            <ProjectIndexItem project={obj}/>
+          </LazyLoad>
+        )
       })
-      debugger
       return (
-        <ul>
-          {projects}
-        </ul>
+        <div className="main-project-index-list-item-container">
+          <div className="project-index-list-item-subcontainer">
+            {projects}
+          </div>
+        </div>
       )
     }
   }
 
   render(){
-
-    debugger
     return (
       <div className="main-projects-index-page-container">
         <div className="projects-index-page-top-level-content-container">
@@ -56,7 +58,7 @@ class ProjectsPage extends React.Component{
             </div>
           </div>
           <div className="projects-index-page-main-content-container">
-            {this.renderProjects()}
+              {this.renderProjects()}
           </div>
         </div>
       </div>

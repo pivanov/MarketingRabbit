@@ -15,7 +15,6 @@ class Dashboard extends React.Component{
   }
 
   componentWillMount(){
-    debugger
     this.setState({selected_page: ""})
   }
 

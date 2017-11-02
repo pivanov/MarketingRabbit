@@ -58,7 +58,6 @@ class AgencyRegistrationProcess extends React.Component{
   }
 
   handleSubmit(){
-    debugger
     this.props.registerAgency(agencyFields).then(()=>history.push("/"))
   }
 
