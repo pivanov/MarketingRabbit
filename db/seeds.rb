@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Sector.destroy_all
-Industry.destory_all
-Service.destory_all
-City.destory_all
+Industry.destroy_all
+Service.destroy_all
+City.destroy_all
 
 sectors_array = []
 File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
