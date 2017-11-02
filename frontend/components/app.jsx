@@ -5,12 +5,14 @@ import GreeingContainer from './greeting_container';
 import { AuthRoute, BusinessProtectedRoute } from '../util/route_util';
 import AgencyRegistrationProcessContainer from './agencies/agency_registration_process_container';
 import ServiceFormContainer from './natives/service_form_container';
-import DashboardContainer from './natives/dashboard_container'
+import DashboardContainer from './natives/dashboard_container';
+import HeaderContainer from './header_container';
+import HomePage from './home_page'
 
 const App = () => (
   <div id="app-container">
-    <h1> Marketing Rabbit </h1>
-    <GreeingContainer />
+    <HeaderContainer/>
+    <Route exact path="/" component={HomePage}/>
     <AuthRoute exact path="/dashboard" component={DashboardContainer}/>
     <AuthRoute exact path="/signup" component={SharedPageContainer} />
     <AuthRoute exact path="/login" component={SharedPageContainer} />

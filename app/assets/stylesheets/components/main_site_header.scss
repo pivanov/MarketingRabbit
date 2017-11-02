@@ -1,0 +1,43 @@
+
+.main-site-header-container{
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  background-color: $black-grey;
+  // border: 1px solid blue;
+  top: 0px;
+}
+
+.main-site-header-content-container{
+  width: 100%;
+  height: 100%;
+  // border: 1px solid black;
+  // background-color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.header-content{
+  // background-color: green;
+  display: flex;
+  width: 95%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-site-header-content-container h1{
+  color: white;
+  font-size: 20px;
+}
+
+.regist-agency-button-nav{
+  margin-left: 20px;
+  padding: 7px 10px 7px 10px;
+  background-color: $pure-orange;
+  color: white;
+}
+
+.login-link-nav{
+  color: white
+}

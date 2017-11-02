@@ -5,33 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Sector.destroy_all
+Industry.destory_all
+Service.destory_all
+City.destory_all
+
+sectors_array = []
+File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
+  sectors_array << line.chomp
+end
+
+sectors_array.each do |sector|
+  Sector.create({name: sector})
+end
 
 
-# sectors_array = []
-# File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
-#   sectors_array << line.chomp
-# end
-#
-# sectors_array.each do |sector|
-#   Sector.create({name: sector})
-# end
-#
-#
-# sector_id = nil
-# File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
-#   industry = line.chomp
-#   if sectors_array.include?(industry)
-#     sector_id = Sector.find_by(name: industry).id
-#     next
-#   end
-#   Industry.create({name: industry, sector_id: sector_id})
-# end
-#
-#
-# File.foreach(File.join(Rails.root, 'db', 'services.txt')) do |line|
-#   service = line.chomp
-#   Service.create({name: service})
-# end
+sector_id = nil
+File.foreach(File.join(Rails.root, 'db', 'industries.txt')) do |line|
+  industry = line.chomp
+  if sectors_array.include?(industry)
+    sector_id = Sector.find_by(name: industry).id
+    next
+  end
+  Industry.create({name: industry, sector_id: sector_id})
+end
+
+
+File.foreach(File.join(Rails.root, 'db', 'services.txt')) do |line|
+  service = line.chomp
+  Service.create({name: service})
+end
 
 
 File.foreach(File.join(Rails.root, 'db', 'cities.txt')) do |line|
