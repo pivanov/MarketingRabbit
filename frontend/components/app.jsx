@@ -4,8 +4,8 @@ import SharedPageContainer from './businesses/shared_page_container';
 import GreeingContainer from './greeting_container';
 import { AuthRoute, BusinessProtectedRoute, ProtectedRoute} from '../util/route_util';
 import AgencyRegistrationProcessContainer from './agencies/agency_registration_process_container';
-import ServiceFormContainer from './natives/service_form_container';
-import DashboardContainer from './natives/dashboard_container';
+import ServiceFormContainer from './dashboard/service_form_container';
+import DashboardContainer from './dashboard/dashboard_container';
 import HeaderContainer from './header_container';
 import HomePage from './home_page'
 

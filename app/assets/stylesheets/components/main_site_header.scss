@@ -43,13 +43,14 @@
 }
 
 
-.logout-nav-button{
+.dashboard-main-nav-buttons{
   color:white;
+  margin-right: 20px;
 }
 
-.dashboard-nav-button{
-  margin-left: 20px;
+.dashboard-nav-label{
   padding: 7px 10px 7px 10px;
   background-color: $pure-orange;
   color: white;
+  font-weight: lighter;
 }
