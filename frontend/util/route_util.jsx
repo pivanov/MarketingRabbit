@@ -8,7 +8,7 @@ const Auth = ({component: Component, path, loggedIn}) => (
     !loggedIn ? (
       <Component {...props}/>
     ) : (
-      <Redirect to="/" />
+      <Redirect to="/dashboard" />
     )
   )}/>
 );
@@ -29,7 +29,7 @@ const BusinessProtected = ({component: Component, path, loggedIn, is_business}) 
      (loggedIn && is_business) ? (
       <Component {...props}/>
     ) : (
-      <Redirect to="/"/>
+      <Redirect to="/login"/>
     )
   )}/>
 )

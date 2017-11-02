@@ -1,0 +1,40 @@
+
+.main-projects-index-page-container{
+  background-color: red;
+  height: 100vh;
+}
+
+.projects-index-page-top-level-content-container{
+  width: 100%;
+  height: 100%;
+  background-color: green;
+}
+
+.projects-index-page-main-header-container{
+  width: 100%;
+  height: 10%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: blue;
+}
+
+.projects-index-page-header-content-container{
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  display: flex;
+}
+
+
+.projects-index-page-main-content-container{
+  height: 90vh;
+  width: 100%;
+  background-color: white;
+  margin-top: 20px;
+}
+
+.new-project-button{
+  background-color: $pure-orange;
+  padding: 10px 20px 10px 20px;
+  color: white;
+}

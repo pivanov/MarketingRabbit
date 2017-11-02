@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SharedPageContainer from './businesses/shared_page_container';
 import GreeingContainer from './greeting_container';
 import { AuthRoute, BusinessProtectedRoute, ProtectedRoute} from '../util/route_util';
@@ -12,11 +12,13 @@ import HomePage from './home_page'
 const App = () => (
   <div id="app-container">
     <HeaderContainer/>
-    <Route exact path="/" component={HomePage}/>
-    <ProtectedRoute exact path="/dashboard" component={DashboardContainer}/>
-    <AuthRoute exact path="/signup" component={SharedPageContainer} />
-    <AuthRoute exact path="/login" component={SharedPageContainer} />
-    <AuthRoute exact path="/register/agency" component={AgencyRegistrationProcessContainer} />
+    <Switch>
+      <AuthRoute exact path="/" component={HomePage}/>
+      <ProtectedRoute exact path="/dashboard" component={DashboardContainer}/>
+      <AuthRoute exact path="/signup" component={SharedPageContainer} />
+      <AuthRoute exact path="/login" component={SharedPageContainer} />
+      <AuthRoute exact path="/register/agency" component={AgencyRegistrationProcessContainer} />
+    </Switch>
     <BusinessProtectedRoute exact path="/service-form" component={ServiceFormContainer} />
   </div>
 );
