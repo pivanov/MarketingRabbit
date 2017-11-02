@@ -35,7 +35,7 @@ class Api::ProjectsController < ApplicationController
   def index
     @projects = Project.where("business_id = ?", params[:business_id])
     if @projects.length == 0
-      render json: {no_projects: "No projects to display"}
+      render json: {no_projects: "No projects to display"}, status: 404 
     else
       render 'api/projects/index'
     end

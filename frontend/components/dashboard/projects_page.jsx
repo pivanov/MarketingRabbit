@@ -7,6 +7,7 @@ class ProjectsPage extends React.Component{
     this.state = {
       projects_list: []
     }
+    this.renderProjects = this.renderProjects.bind(this)
   }
 
   componentDidMount(){
@@ -19,19 +20,43 @@ class ProjectsPage extends React.Component{
     this.setState({projects_list: nextProps.projects})
   }
 
+  renderProjects(){
+    debugger
+    if (this.state.projects_list.length == 0){
+      return(
+        <div className="no-projects-response">
+          <h1>No projects to display</h1>
+          <button>Start a new project now</button>
+        </div>
+      )
+    } else {
+      let projectsArray = Object.values(this.state.projects_list)
+      debugger
+      let projects = projectsArray.map((obj)=>{
+        return <li key={obj.id}>{obj.project_name}</li>
+      })
+      debugger
+      return (
+        <ul>
+          {projects}
+        </ul>
+      )
+    }
+  }
+
   render(){
-    // const projects = this.state.projects.forEach
-    // debugger
+
+    debugger
     return (
       <div className="main-projects-index-page-container">
         <div className="projects-index-page-top-level-content-container">
           <div className="projects-index-page-main-header-container">
             <div className="projects-index-page-header-content-container">
-              <button className="new-project-button">New project</button>
+              <button name="new-project" onClick={this.props.handleSelectedPage} className="new-project-button">New project</button>
             </div>
           </div>
           <div className="projects-index-page-main-content-container">
-
+            {this.renderProjects()}
           </div>
         </div>
       </div>

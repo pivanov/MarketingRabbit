@@ -11,9 +11,8 @@
           :monthly_budget,
           :location_preference,
           :agency_preference,
-          :agency_type,
-          :agency_size,
-          :provider_id,
-          :location
+          :agency_location_preference,
+          :agency_type_preference,
+          :provider_id
   end
 end

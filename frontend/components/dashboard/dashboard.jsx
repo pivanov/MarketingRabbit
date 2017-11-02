@@ -14,14 +14,23 @@ class Dashboard extends React.Component{
     this.handleSelectedPage = this.handleSelectedPage.bind(this)
   }
 
+  componentWillMount(){
+    debugger
+    this.setState({selected_page: ""})
+  }
+
   renderSelectedPage(page){
     if(page == 'projects'){
       return (
-        <ProjectsPageContainer />
+        <ProjectsPageContainer handleSelectedPage={this.handleSelectedPage}/>
       )
-    } else {
+    }else if(page == 'new-project'){
       return (
-        <h1>Hello</h1>
+        <ServiceFormContainer />
+      )
+    }else{
+      return (
+        <h1>This will be the homepage for dashboard</h1>
       )
     }
   }
