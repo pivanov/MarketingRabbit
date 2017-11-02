@@ -47,10 +47,10 @@
 }
 
 .stepone-button-container > button{
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding-right: 30px;
-  padding-left: 30px;
+  margin-top: 19px;
+  margin-bottom: 19px;
+  padding-right: 25px;
+  padding-left: 25px;
   color: white;
   text-transform: uppercase;
   background-color: $pure-orange;
@@ -60,7 +60,7 @@
 // =========STEP 2
 
 .steps-buttons-container{
-  grid-row: 5/6;
+  grid-row: 6/6;
   display: flex;
   justify-content: space-between;
 }
@@ -94,10 +94,10 @@
 }
 
 .steps-buttons-container button{
-  margin-top: 25px;
-  margin-bottom: 25px;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 25px;
+  padding-left: 25px;
   color: white;
   text-transform: uppercase;
   background-color: $pure-orange;
