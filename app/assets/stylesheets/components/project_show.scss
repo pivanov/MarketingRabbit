@@ -6,3 +6,26 @@
 .project-show-content-container{
   height: 100%;
 }
+
+.dummy-block{
+  height: 60px;
+  background: pink;
+}
+
+.project-stage-container{
+  height: 65px;
+  background-color: $light-grey;
+}
+
+.project-progress-step{
+  display: block;
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  // margin-left: 197px;
+}
+
+
+// using service form progress bar

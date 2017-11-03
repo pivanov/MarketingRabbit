@@ -113,8 +113,15 @@ class ServiceForm extends React.Component{
   }
 
   render() {
-    var style = {
-      width: (this.state.step / 4 * 100) + '%'
+    let style;
+    if(this.state.step){
+      style = {
+        width: (this.state.step / 4 * 100) + '%'
+      }
+    } else {
+      style = {
+        width: (2 / 4 * 100) + '%'
+      }
     }
     return (
       <div className="dashboard-container">

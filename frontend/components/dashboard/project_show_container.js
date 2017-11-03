@@ -7,7 +7,7 @@ const mapStateToProps = (state, ownProps)=>({
 });
 
 const mapDispatchToProps = (dispatch)=>({
-  fetchProject: (id)=>dispatch(fetchProject())
+  fetchProject: (id)=>dispatch(fetchProject(id))
 });
 
 export default connect(

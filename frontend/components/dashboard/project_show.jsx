@@ -5,23 +5,49 @@ class ProjectShow extends React.Component{
   constructor(props){
     super(props)
     this.state = this.props.project
+    this.renderProgressBar = this.renderProgressBar.bind(this)
   }
 
   componentDidMount(){
-    this.props.fetchProject(this.props.project.id)
+    this.props.fetchProject(this.props.match.params.projectId)
   }
 
-  componentWillReceiveProps(nextProps){
-    this.setState(nextProps)
+  componentWillReceiveProps({project}){
+    this.setState(project)
   }
 
+  renderProgressBar(){
+    var style;
+    if(this.state){
+      style = {
+        width: (this.state.stage / 5 * 100) + '%'
+      }
+    } else {
+      style = {
+        width: (0) + '%'
+      }
+    }
+    return(
+      <div className="service-form-progress-bar">
+        <span style={style}></span>
+      </div>
+    )
+  }
   render(){
+
     return(
       <div className="dashboard-container">
         <DashboardHeaderContainer />
         <div className="root-project-show-container">
           <div className="project-show-content-container">
-            {this.props.project.project_name}
+            <div className="dummy-block">
+            </div>
+            <div className="project-stage-container">
+              <div className="project-stage-content-container">
+                <span className="project-progress-step">Project Stage</span>
+                {this.renderProgressBar()}
+              </div>
+            </div>
           </div>
         </div>
       </div>
