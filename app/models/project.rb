@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   validates :agency_preference, :location_preference, inclusion: { in: [true, false] }
   validate :ensure_valid_date
   after_initialize :set_defaults, :parse_date_input
-  before_create :set_stage
+  before_validation :set_stage
 
   belongs_to :business,
     class_name: 'Business',
