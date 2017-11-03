@@ -8,6 +8,7 @@ import DashboardHome from './dashboard/dashboard_home';
 import HomePage from './home_page';
 import HeaderContainer from './header_container';
 import ProjectsPageContainer from './dashboard/projects_page_container';
+import ProjectShowContainer from './dashboard/project_show_container'
 
 const App = () => (
   <div id="app-container">
@@ -22,6 +23,7 @@ const App = () => (
       <ProtectedRoute exact path="/dashboard" component={DashboardHome}/>
       <BusinessProtectedRoute exact path="/dashboard/projects" component={ProjectsPageContainer}/>
       <BusinessProtectedRoute exact path="/dashboard/projects/new" component={ServiceFormContainer}/>
+      <BusinessProtectedRoute exact path="/dashboard/projects/:projectId" component={ProjectShowContainer}/>
     </Switch>
   </div>
 );

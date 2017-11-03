@@ -50,7 +50,7 @@ class ServiceForm extends React.Component{
   }
 
   handleSubmit(){
-    this.props.createProject(projectFields).then(()=>this.props.history.push('/dashboard'))
+    this.props.createProject(projectFields).then(()=>this.props.history.push('/dashboard/projects'))
     // after successful creation of a project redirect to dashboard or new project show page
   }
 

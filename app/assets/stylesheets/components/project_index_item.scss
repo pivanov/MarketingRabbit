@@ -1,0 +1,31 @@
+.project-list-item-content{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  // background-color: red;
+}
+
+.project-list-item-content h1{
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: capitalize;
+  grid-column: 1 / 5;
+  grid-row: 1 / 2;
+  // background-color: blue;
+  border-bottom: 3px solid $lightest-grey;
+}
+
+.view-project-item-container{
+  // background-color: green;
+  grid-column: 4 / 5;
+  grid-row: 4 / 5;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.view-project-link{
+  color:white;
+  background-color: $pure-orange;
+  padding: 10px 30px 10px 30px;
+}
