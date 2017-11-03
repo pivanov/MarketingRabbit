@@ -1,6 +1,6 @@
 .root-project-show-container{
   height: 100vh;
-  background-color: red;
+  background-color: $lightest-grey;
 }
 
 .project-show-content-container{
@@ -29,3 +29,41 @@
 
 
 // using service form progress bar
+
+.projects-stage-two-container{
+  margin-top: 20px;
+  height:80%;
+  width: 100%;
+  background-color: $lightest-grey;
+}
+
+.projects-stage-two-main-content-container{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.stage-two-top-level-text h1{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.stage-two-top-level-text h2{
+  font-size: 20px;
+}
+
+.stage-two-top-level-text{
+  margin-bottom: 30px;
+}
+.stage-two-project-details-view{
+  background-color: white;
+  height: 450px;
+  padding: 20px 20px 20px 20px;
+}
+
+.stage-two-project-details-form h1{
+  font-size: 30px;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 30px;
+}

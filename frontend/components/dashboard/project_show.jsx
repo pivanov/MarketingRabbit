@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 import DashboardHeaderContainer from './dashboard_header_container';
+import ProjectStageTwo from './project_stagetwo';
 
 class ProjectShow extends React.Component{
   constructor(props){
     super(props)
     this.state = this.props.project
     this.renderProgressBar = this.renderProgressBar.bind(this)
+    this.renderProjectStageContent = this.renderProjectStageContent.bind(this)
   }
 
   componentDidMount(){
@@ -33,6 +35,17 @@ class ProjectShow extends React.Component{
       </div>
     )
   }
+
+  renderProjectStageContent(){
+    if(this.state){
+      if(this.state.stage == 2){
+        return (
+          <ProjectStageTwo project={this.state} />
+        )
+      }
+    }
+  }
+
   render(){
 
     return(
@@ -48,6 +61,7 @@ class ProjectShow extends React.Component{
                 {this.renderProgressBar()}
               </div>
             </div>
+            {this.renderProjectStageContent()}
           </div>
         </div>
       </div>
