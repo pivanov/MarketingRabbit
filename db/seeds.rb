@@ -42,3 +42,6 @@ File.foreach(File.join(Rails.root, 'db', 'cities.txt')) do |line|
   city_and_country = line.chomp.split(',')
   City.create({name: city_and_country[0], country: city_and_country[1]})
 end
+
+
+Business.create({firstname: "demo", lastname: "login", email: "demo@gmail.com", password:"test1234", website:"demo.com", organization:"demologin", industry_id: 1, business_type:"B2B"})

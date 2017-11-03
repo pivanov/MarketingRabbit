@@ -11,6 +11,7 @@ class LoginForm extends React.Component{
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleInput = this.handleInput.bind(this)
+    this.demoLogin = this.demoLogin.bind(this)
   }
 
   componentWillMount(){
@@ -46,23 +47,29 @@ class LoginForm extends React.Component{
     }
   }
 
+  demoLogin(){
+    this.props.login({email:"demo@gmail.com", password:"test1234"})
+  }
+
   render(){
 
     return(
-      <form className="sharedForm" onSubmit={this.handleSubmit}>
-        {this.checkForValidity()}
-        <label htmlFor="signinemail">Email</label>
-        <input onChange={this.handleInput('email')} id="signinemail" type="text" placeholder="you@your-email.com" value={this.state.email}/>
-        {this.checkForField('invalidEmail', 'email')}
-        <br/>
+      <div>
+        <form className="sharedForm" onSubmit={this.handleSubmit}>
+          {this.checkForValidity()}
+          <label htmlFor="signinemail">Email</label>
+          <input onChange={this.handleInput('email')} id="signinemail" type="text" placeholder="you@your-email.com" value={this.state.email}/>
+          {this.checkForField('invalidEmail', 'email')}
+          <br/>
 
-        <label htmlFor="signinpassword">Password</label>
-        <input type="password" onChange={this.handleInput('password')} placeholder="Password" id="signinpassword"/>
-        {this.checkForField('blankPassword', 'password')}
-        <br/>
-
-      <button className="submitButton">Log In</button>
-      </form>
+          <label htmlFor="signinpassword">Password</label>
+          <input type="password" onChange={this.handleInput('password')} placeholder="Password" id="signinpassword"/>
+          {this.checkForField('blankPassword', 'password')}
+          <br/>
+        <button className="submitButton">Log In</button>
+        </form>
+        <button onClick={this.demoLogin}>Demo login</button>
+      </div>
     )
   }
 }
