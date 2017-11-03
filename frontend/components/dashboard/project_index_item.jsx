@@ -12,7 +12,7 @@ class ProjectIndexItem extends React.Component{
         <h1>{this.props.project.project_name}</h1>
         <h2>{this.props.project.serv}</h2>
         <div className="view-project-item-container">
-          <Link to={`/dashboard/projects/${this.props.project.id}`} className="view-project-link">Edit</Link>
+          <Link to={`/dashboard/projects/${this.props.project.id}`} className="view-project-link">View</Link>
         </div>
       </div>
     )

@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   validates :agency_preference, :location_preference, inclusion: { in: [true, false] }
   validate :ensure_valid_date
   after_initialize :set_defaults, :parse_date_input
+  before_create :set_stage
 
   belongs_to :business,
     class_name: 'Business',
@@ -30,6 +31,10 @@ class Project < ApplicationRecord
   private
   def parse_date_input
     self.project_start_date = Date.parse('2017-10-30') if self.project_start_date.nil?
+  end
+
+  def set_stage
+    self.stage = 2
   end
 
   def set_defaults

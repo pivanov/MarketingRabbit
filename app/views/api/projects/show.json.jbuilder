@@ -10,4 +10,5 @@ json.extract! @project,
 :agency_location_preference,
 :agency_preference,
 :agency_type_preference,
-:provider_id
+:provider_id,
+:stage
