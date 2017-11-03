@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Dashboard from './dashboard';
+import DashboardHeader from './dashboard_header';
 import {updateProject, createProject, fetchProject, fetchProjects} from '../../actions/project_actions'
 import {logout} from '../../actions/session_actions'
 
@@ -9,14 +9,10 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: ()=>dispatch(logout()),
-  updateProject: (project)=>dispatch(updateProject(project)),
-  createProject: (project)=>dispatch(createProject(project)),
-  fetchProject: (id) =>dispatch(fetchProject(id)),
-  fetchProjects: (business_id)=>dispatch(fetchProjects(business_id))
+  logout: ()=>dispatch(logout())
 })
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dashboard)
+)(DashboardHeader)

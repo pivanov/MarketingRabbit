@@ -1,8 +1,10 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import ServiceFormStepOne from './service_form_stepone';
 import ServiceFormStepTwo from './service_form_steptwo';
 import ServiceFormStepThree from './service_form_stepthree';
 import ServiceFormStepFour from './service_form_stepfour';
+import DashboardHeaderContainer from './dashboard_header_container'
 
 var projectFields = {
   business_id: "",
@@ -48,7 +50,7 @@ class ServiceForm extends React.Component{
   }
 
   handleSubmit(){
-    this.props.createProject(projectFields).then(()=>this.props.history.push('/'))
+    this.props.createProject(projectFields).then(()=>this.props.history.push('/dashboard'))
     // after successful creation of a project redirect to dashboard or new project show page
   }
 
@@ -115,25 +117,28 @@ class ServiceForm extends React.Component{
       width: (this.state.step / 4 * 100) + '%'
     }
     return (
-      <section className="service-form-page-container">
-        <div className="service-form-top-level-content-container">
-          <section className="service-form-progress-section-container">
-            <span className="service-form-progress-step">Project form</span>
-            <div className="service-form-progress-bar">
-              <span style={style}></span>
-            </div>
-          </section>
-          <section className="service-form-content-main-container">
-            <form className="service-form-shared-form">
-              {this.renderStep()}
-            </form>
-          </section>
-        </div>
-      </section>
+      <div className="dashboard-container">
+        <DashboardHeaderContainer />
+        <section className="service-form-page-container">
+          <div className="service-form-top-level-content-container">
+            <section className="service-form-progress-section-container">
+              <span className="service-form-progress-step">Project form</span>
+              <div className="service-form-progress-bar">
+                <span style={style}></span>
+              </div>
+            </section>
+            <section className="service-form-content-main-container">
+              <form className="service-form-shared-form">
+                {this.renderStep()}
+              </form>
+            </section>
+          </div>
+        </section>
+      </div>
     )
   }
 
 }
 
 
-export default ServiceForm;
+export default withRouter(ServiceForm);

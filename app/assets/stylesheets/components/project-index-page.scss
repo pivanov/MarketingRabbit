@@ -1,23 +1,31 @@
 
 .main-projects-index-page-container{
-  background-color: $light-grey;
-  height: 100vh;
+  background-color: red;
+  height: 100%;
+  // background-size: cover;
+  // overflow: hidden;
 }
 
 .projects-index-page-top-level-content-container{
   width: 100%;
+  min-height: calc(100vh - 170px);
   height: 100%;
   background-color: $light-grey;
+  margin-top: 60px;
+  padding-top: 30px;
+  background-size: cover;
 }
 
 .projects-index-page-main-header-container{
   width: 100%;
-  height: 10%;
+  height: 50px;
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: white;
   display: flex;
   justify-content: center;
+  position: sticky;
+  top:60px;
 }
 
 .projects-index-page-header-content-container{
@@ -31,16 +39,17 @@
 
 
 .projects-index-page-main-content-container{
-  height: 90vh;
+  // height: 90vh;
+  // height: 100%;
   // width: 100%;
   // height: 90%;
   width: 70%;
   margin-left: auto;
   margin-right: auto;
-  background-color: $lightest-grey;
+  background-color: $light-grey;
   // background-color: $light-grey;
-  margin-top: 20px;
-  padding: 30px 30px 0px 30px;
+  // margin-top: 20px;
+  // padding: 30px 30px 0px 30px;
 }
 
 .new-project-button{
@@ -52,7 +61,7 @@
 }
 
 .main-project-index-list-item-container{
-  height: 30%;
+  height: 200px;
   background-color: white;
   margin-bottom: 30px;
   display: flex;
@@ -64,4 +73,9 @@
   width: 95%;
   height: 80%;
   background-color: white;
+}
+
+
+.projects-index-page-main-content-container ul{
+  height: 80%;
 }

@@ -8,6 +8,15 @@
   top: 0px;
 }
 
+.dashboard-nav-header-container{
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  background-color: $black-grey;
+  // border: 1px solid blue;
+  // top: 0px;
+}
+
 .main-site-header-content-container{
   width: 100%;
   height: 100%;
@@ -48,7 +57,7 @@
   margin-right: 20px;
 }
 
-.dashboard-nav-label{
+.dashboard-nav-home-button{
   padding: 7px 10px 7px 10px;
   background-color: #1874CD;
   color: white;

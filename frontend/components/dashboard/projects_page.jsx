@@ -1,6 +1,7 @@
 import React from 'react';
 import ProjectIndexItem from './project_index_item';
-import LazyLoad from 'react-lazyload';
+import DashboardHeaderContainer from './dashboard_header_container'
+import { withRouter } from 'react-router-dom';
 
 class ProjectsPage extends React.Component{
   constructor(props){
@@ -9,6 +10,7 @@ class ProjectsPage extends React.Component{
       projects_list: []
     }
     this.renderProjects = this.renderProjects.bind(this)
+    this.handleNewProject = this.handleNewProject.bind(this)
   }
 
   componentDidMount(){
@@ -17,7 +19,6 @@ class ProjectsPage extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    // debugger
     this.setState({projects_list: nextProps.projects})
   }
 
@@ -30,35 +31,43 @@ class ProjectsPage extends React.Component{
         </div>
       )
     } else {
-      let projectsArray = Object.values(this.state.projects_list)
+      let projectsArray = Object.values(this.state.projects_list).reverse()
       let projects = projectsArray.map((obj)=>{
         return (
-          <LazyLoad height={400} once key={obj.id} offset={400}>
-            <ProjectIndexItem project={obj}/>
-          </LazyLoad>
+          <div className="main-project-index-list-item-container" key={obj.id}>
+            <div className="project-index-list-item-subcontainer">
+                <ProjectIndexItem project={obj}/>
+            </div>
+          </div>
         )
       })
       return (
-        <div className="main-project-index-list-item-container">
-          <div className="project-index-list-item-subcontainer">
-            {projects}
-          </div>
-        </div>
+        <ul>
+          {projects}
+        </ul>
       )
     }
   }
 
+  handleNewProject(e){
+    e.preventDefault()
+    this.props.history.push('/dashboard/projects/new')
+  }
+
   render(){
     return (
-      <div className="main-projects-index-page-container">
-        <div className="projects-index-page-top-level-content-container">
+      <div className="dashboard-container">
+        <DashboardHeaderContainer />
+        <div className="main-projects-index-page-container">
           <div className="projects-index-page-main-header-container">
             <div className="projects-index-page-header-content-container">
-              <button name="new-project" onClick={this.props.handleSelectedPage} className="new-project-button">New project</button>
+              <button name="new-project" onClick={this.handleNewProject} className="new-project-button">New project</button>
             </div>
           </div>
-          <div className="projects-index-page-main-content-container">
+          <div className="projects-index-page-top-level-content-container">
+            <div className="projects-index-page-main-content-container">
               {this.renderProjects()}
+            </div>
           </div>
         </div>
       </div>
@@ -66,4 +75,4 @@ class ProjectsPage extends React.Component{
   }
 }
 
-export default ProjectsPage
+export default withRouter(ProjectsPage)
