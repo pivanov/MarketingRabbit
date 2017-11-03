@@ -58,7 +58,7 @@ class AgencyRegistrationProcess extends React.Component{
   }
 
   handleSubmit(){
-    this.props.registerAgency(agencyFields).then(()=>history.push("/"))
+    this.props.registerAgency(agencyFields).then(()=>history.push("/dashboard"))
   }
 
   saveValues(value){

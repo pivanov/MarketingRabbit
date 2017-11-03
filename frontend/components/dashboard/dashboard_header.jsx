@@ -21,6 +21,34 @@ class DashboardHeader extends React.Component{
       this.props.logout().then(()=>this.props.history.push('/login'))
     } else if(e.target.name == 'home'){
       this.props.history.push('/dashboard')
+    } else if(e.target.name == 'available-projects'){
+      this.props.history.push('/dashboard/available-projects')
+    }
+  }
+
+  renderProperHeader(){
+    if(this.props.currentUser.type == "Business"){
+      return(
+        <div>
+          <button className="dashboard-main-nav-buttons">Notifications</button>
+          <button className="dashboard-main-nav-buttons">Agency Database</button>
+          <button name="projects" onClick={this.handleNavigation} className="dashboard-main-nav-buttons">Projects</button>
+          <button className="dashboard-main-nav-buttons">Account Details</button>
+          <button onClick={this.handleNavigation} name="logout"className="dashboard-main-nav-buttons">Logout</button>
+          <button onClick={this.handleNavigation} name="home" className="dashboard-nav-home-button">Dashboard</button>
+        </div>
+      )
+
+    } else if(this.props.currentUser.type == "Agency"){
+      return(
+        <div>
+          <button className="dashboard-main-nav-buttons">Notifications</button>
+          <button name="available-projects" className="dashboard-main-nav-buttons">Available Projects</button>
+          <button className="dashboard-main-nav-buttons">Account Details</button>
+          <button onClick={this.handleNavigation} name="logout"className="dashboard-main-nav-buttons">Logout</button>
+          <button onClick={this.handleNavigation} name="home" className="dashboard-nav-home-button">Dashboard</button>
+        </div>
+      )
     }
   }
 
@@ -30,14 +58,7 @@ class DashboardHeader extends React.Component{
         <div className="main-site-header-content-container">
           <div className="header-content">
             <h1>[LOGO]</h1>
-              <div>
-                <button className="dashboard-main-nav-buttons">Notifications</button>
-                <button className="dashboard-main-nav-buttons">Agency Database</button>
-                <button name="projects" onClick={this.handleNavigation} className="dashboard-main-nav-buttons">Projects</button>
-                <button className="dashboard-main-nav-buttons">Account Details</button>
-                <button onClick={this.handleNavigation} name="logout"className="dashboard-main-nav-buttons">Logout</button>
-                <button onClick={this.handleNavigation} name="home" className="dashboard-nav-home-button">Dashboard</button>
-              </div>
+            {this.renderProperHeader()}
           </div>
         </div>
       </header>
