@@ -44,4 +44,4 @@ File.foreach(File.join(Rails.root, 'db', 'cities.txt')) do |line|
 end
 
 
-Business.create({firstname: "demo", lastname: "login", email: "demo@gmail.com", password:"test1234", website:"demo.com", organization:"demologin", industry_id: 1, business_type:"B2B"})
+Business.create({firstname: "demo", lastname: "login", email: "demo@gmail.com", password:"test1234", website:"demo.com", organization:"demologin", industry_id: Industry.first.id, business_type:"B2B"})
