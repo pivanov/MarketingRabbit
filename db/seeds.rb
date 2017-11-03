@@ -9,6 +9,7 @@ Sector.destroy_all
 Industry.destroy_all
 Service.destroy_all
 City.destroy_all
+User.destroy_all
 
 sectors_array = []
 File.foreach(File.join(Rails.root, 'db', 'sectors.txt')) do |line|
