@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import SharedPageContainer from './businesses/shared_page_container';
 import { AuthRoute, BusinessProtectedRoute, ProtectedRoute} from '../util/route_util';
 import AgencyRegistrationProcessContainer from './agencies/agency_registration_process_container';
+import AgencyRegisterSplashPage from './agencies/agency_register_splash_page';
 import ServiceFormContainer from './dashboard/service_form_container';
 import DashboardHome from './dashboard/dashboard_home';
 import HomePage from './home_page';
@@ -18,7 +19,8 @@ const App = () => (
       <AuthRoute exact path="/" component={HomePage}/>
       <AuthRoute exact path="/signup" component={SharedPageContainer} />
       <AuthRoute exact path="/login" component={SharedPageContainer} />
-      <AuthRoute exact path="/register/agency" component={AgencyRegistrationProcessContainer} />
+      <AuthRoute exact path="/register-agency" component={AgencyRegisterSplashPage} />
+      <AuthRoute exact path="/register-agency/form" component={AgencyRegistrationProcessContainer} />
     </Switch>
     <Switch>
       <ProtectedRoute exact path="/dashboard" component={DashboardHome}/>

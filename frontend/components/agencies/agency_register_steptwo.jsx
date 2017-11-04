@@ -8,15 +8,27 @@ class AgencyRegisterStepTwo extends React.Component{
   constructor(props){
     super(props)
     this.state ={
-      vertical_ids: [],
-      service_ids: [],
-      city_id: "",
-      password: ""
+      vertical_ids: "default",
+      service_ids: "default",
+      city_ids: "default",
+      business_type_served: "default",
+      minimum_project_size: "default"
     }
 
     this.nextStep = this.nextStep.bind(this)
-    this.handleVerticals = this.handleVerticals.bind(this)
-    this.handleServices = this.handleServices.bind(this);
+    this.handleIds = this.handleIds.bind(this)
+  }
+
+  showInputError(){
+    function isEmpty(el){
+      return el.length == 0
+    }
+
+    if(Object.values(this.state).some(isEmpty)){
+      return (
+        <p>All fields are required</p>
+      )
+    }
   }
 
   nextStep(e){
@@ -24,25 +36,32 @@ class AgencyRegisterStepTwo extends React.Component{
     const data = {
       vertical_ids: this.state.vertical_ids,
       service_ids: this.state.service_ids,
-      city_id: this.state.city_id,
-      password: this.password.value
+      city_ids: this.state.city_ids,
+      business_type_served: this.state.business_type_served,
+      minimum_project_size: this.state.minimum_project_size
     }
-    this.props.saveValues(data)
-    this.props.handleSubmit()
+    let dataKeys = Object.keys(data)
+    let errors = 0
+    dataKeys.forEach((key)=>{
+      if(eval(`data.${key}`).length == 0 || eval(`data.${key}`) == "default"){
+        data[key] = []
+        errors += 1
+      }
+    })
+    debugger
+    this.setState(data)
+    if(errors == 0){
+      this.props.saveValues(data)
+      this.props.nextStep()
+    }
   }
 
-  handleVerticals(vals){
+  handleIds(vals, key){
     let ids = vals.map((obj)=>{
       return obj.value
     })
-    this.setState({vertical_ids: ids})
-  }
-
-  handleServices(vals){
-    let ids = vals.map((obj)=>{
-      return obj.value
-    })
-    this.setState({service_ids: ids})
+    debugger
+    this.setState({[key]: ids})
   }
 
   render(){
@@ -59,25 +78,22 @@ class AgencyRegisterStepTwo extends React.Component{
     })
 
     return(
-      <div className="agency-register-steptwo-container">
-        <section className="agency-register-steptwo-main-content-container">
-          <div className="agency-register-steptwo-third-level-container">
-            <h1>Tell us a little more about your agency</h1>
-            <form className="agency-register-steptwo-form" onSubmit={this.nextStep}>
-              <section className="agency-register-steptwo-content-container">
-                <label>Which verticals does your agency mainly work with?</label>
-                <VirtualizedSelect multi={true} autoFocus clearable={false} className="agency-signup-step-two-bars" options={sectors} value={this.state.vertical_ids} onChange={vals=>this.handleVerticals(vals)}/>
-                <label>Which services does you agency provide?</label>
-                <VirtualizedSelect multi={true} autoFocus clearable={false} className="agency-signup-step-two-bars" options={services} value={this.state.service_ids} onChange={vals=>this.handleServices(vals)}/>
-                <label>Where is your agency located</label>
-                <VirtualizedSelect autoFocus clearable={false} className="agency-signup-step-two-bars" options={cities} value={this.state.city_id} onChange={val=>this.setState({city_id: val.value})}/>
-                <label>Choose a password for your account </label>
-                <input type="password" ref={(input)=>this.password=input} placeholder="Password"/>
-              </section>
-              <button>Submit</button>
-            </form>
-          </div>
-        </section>
+      <div>
+        <h1>Tell us a little more about your agency</h1>
+        <form className="agency-register-steptwo-form" onSubmit={this.nextStep}>
+          <section className="agency-register-steptwo-content-container">
+            <label>Which verticals does your agency mainly work with?</label>
+            <VirtualizedSelect multi={true} autoFocus clearable={false} className="agency-signup-step-two-bars" options={sectors} value={this.state.vertical_ids} onChange={vals=>this.handleIds(vals, "vertical_ids")}/>
+            <label>Which services does you agency provide?</label>
+            <VirtualizedSelect multi={true} autoFocus clearable={false} className="agency-signup-step-two-bars" options={services} value={this.state.service_ids} onChange={vals=>this.handleIds(vals, "service_ids")}/>
+            <label>Where is your agency located?</label>
+            <VirtualizedSelect multi={true} autoFocus clearable={false} className="agency-signup-step-two-bars" options={cities} value={this.state.city_ids} onChange={vals=>this.handleIds(vals, "city_ids")}/>
+            <label>Which market does your agency serve?</label>
+            <VirtualizedSelect multi={true} autoFocus clearable={false} className="agency-signup-step-two-bars" options={cities} value={this.state.city_id} onChange={val=>this.setState({city_id: val.value})}/>
+          </section>
+          <button>Submit</button>
+          {this.showInputError()}
+        </form>
       </div>
     )
   }

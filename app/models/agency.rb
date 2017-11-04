@@ -1,5 +1,5 @@
 class Agency < User
-  validates :service_ids, :website, :city_id, :vertical_ids, presence:true
+  validates :service_ids, :website, :vertical_ids, :city_ids, :minimum_project_size, :business_type_served, presence:true
   # has_many :contracts,
   #   class_name: 'Contract',
   #   foreign_key: :agency_id,
@@ -20,12 +20,15 @@ class Agency < User
     dependent: :destroy,
     inverse_of: :agency
 
-  belongs_to :city,
-    class_name: "City",
-    foreign_key: :city_id,
-    primary_key: :id
+  has_many :agency_locations,
+    class_name: 'AgencyLocations',
+    foreign_key: :agency_id,
+    primary_key: :id,
+    dependent: :destroy,
+    inverse_of: :agency
 
-
+  # we now have a method called city_ids
+  has_many :cities, through: :agency_locations, source: :city
   # we now have a method called vertical_ids
   has_many :verticals, through: :agency_servicings, source: :sector
 

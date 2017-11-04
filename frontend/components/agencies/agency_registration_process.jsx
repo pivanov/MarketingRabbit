@@ -1,6 +1,7 @@
 import React from 'react'
-import AgencyRegisterSplashPageContainer from './agency_register_splash_container'
+import AgencyRegisterStepOne from './agency_register_stepone'
 import AgencyRegisterStepTwo from './agency_register_steptwo'
+import AgencyRegisterStepThree from './agency_register_stepthree';
 
 var agencyFields = {
     firstname: "",
@@ -8,10 +9,12 @@ var agencyFields = {
     email: "",
     organization: "",
     website: "",
-    city_id: "",
+    city_ids: "",
     password: "",
     service_ids: "",
-    vertical_ids: ""
+    vertical_ids: "",
+    business_type_served: "",
+    minimum_project_size: ""
 }
 
 class AgencyRegistrationProcess extends React.Component{
@@ -27,30 +30,24 @@ class AgencyRegistrationProcess extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount(){
-    this.props.clearRegistrationErrors()
+  componentWillMount(){
     agencyFields = {
-        firstname: "",
-        lastname: "",
-        email: "",
-        organization: "",
-        website: "",
-        city_id: "",
-        password: "",
-        service_ids: "",
-        vertical_ids: ""
+      firstname: "",
+      lastname: "",
+      email: "",
+      organization: "",
+      website: "",
+      city_ids: "",
+      password: "",
+      service_ids: "",
+      vertical_ids: "",
+      business_type_served: "",
+      minimum_project_size: ""
     }
   }
 
   nextStep(){
-    this.props.registerAgency(agencyFields)
-      .then(()=>this.setState({step: this.state.step + 1}),
-      (errors)=>{
-        let errorsArray = Object.keys(errors.errors)
-        if(errorsArray.length == 5){
-          this.setState({step: this.state.step + 1})
-        }
-      })
+    this.setState({step: this.state.step + 1})
   }
 
   previousStep(){
@@ -69,30 +66,44 @@ class AgencyRegistrationProcess extends React.Component{
     switch(this.state.step){
       case 1:
         return(
-          <AgencyRegisterSplashPageContainer
+          <AgencyRegisterStepOne
             agencyFields={agencyFields}
             nextStep={this.nextStep}
-            saveValues={this.saveValues} />
+            saveValues={this.saveValues}
+            />
         )
       case 2:
         return(
           <AgencyRegisterStepTwo
+            previousStep={this.previousStep}
             agencyFields={agencyFields}
             saveValues={this.saveValues}
             errors={this.props.errors}
             cities={this.props.cities}
             services={this.props.services}
             sectors={this.props.sectors}
-            handleSubmit={this.handleSubmit}/>
+            nextStep={this.nextStep} />
+        )
+      case 3:
+        return(
+          <AgencyRegisterStepThree
+            previousStep={this.previousStep}
+            agencyFields={agencyFields}
+            saveValues={this.saveValues}
+            handleSubmit={this.handleSubmit} />
         )
     }
   }
 
   render(){
     return (
-      <div>
-        {this.renderStep()}
-      </div>
+        <div className="agency-register-steptwo-container">
+          <section className="agency-register-steptwo-main-content-container">
+            <div className="agency-register-steptwo-third-level-container">
+              {this.renderStep()}
+            </div>
+          </section>
+        </div>
     )
   }
 

@@ -22,6 +22,23 @@ class Api::ProjectsController < ApplicationController
     end
   end
 
+  def relevantProjects
+    # project_params will be an object with all the keys we need to iterate through
+    # to find relevant projects
+    # project_params = {city_ids, service_ids, etc.}
+    # these are propterties that belong to an agency and what we
+    # aare trying to do is find those projects that meet this criteria
+    # in the process we need to able to rank these projects so that the most
+    # relevant ones are shown first
+    # how we're going to rank them is going to be based on the point system
+    # we develop.
+    # Fir instance, a project that is looking for an agency is NYC, that specializes in
+    # social media marketing, and serves B2B companies will most likely have a high score
+    # of relevance
+
+    # @projects =
+  end
+
   def show
     @project = Project.find_by(id: params[:id])
     if @project
@@ -35,7 +52,7 @@ class Api::ProjectsController < ApplicationController
   def index
     @projects = Project.where("business_id = ?", params[:business_id])
     if @projects.length == 0
-      render json: {no_projects: "No projects to display"}, status: 404 
+      render json: {no_projects: "No projects to display"}, status: 404
     else
       render 'api/projects/index'
     end

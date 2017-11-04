@@ -15,7 +15,7 @@ class Header extends React.Component{
               <h1>[LOGO]</h1>
               <div>
                 <Link to="/login" className="login-link-nav">Login</Link>
-                <Link to="/register/agency" className="regist-agency-button-nav">Register your agency</Link>
+                <Link to="/register-agency" className="regist-agency-button-nav">Register your agency</Link>
               </div>
             </div>
           </div>
