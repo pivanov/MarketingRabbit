@@ -43,7 +43,7 @@ class DashboardHeader extends React.Component{
       return(
         <div>
           <button className="dashboard-main-nav-buttons">Notifications</button>
-          <button name="available-projects" className="dashboard-main-nav-buttons">Available Projects</button>
+          <button name="available-projects" onClick={this.handleNavigation} className="dashboard-main-nav-buttons">Available Projects</button>
           <button className="dashboard-main-nav-buttons">Account Details</button>
           <button onClick={this.handleNavigation} name="logout"className="dashboard-main-nav-buttons">Logout</button>
           <button onClick={this.handleNavigation} name="home" className="dashboard-nav-home-button">Dashboard</button>

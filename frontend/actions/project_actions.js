@@ -43,3 +43,10 @@ export const updateProject = (project) => (dispatch) =>(
     .then((project)=>dispatch(receiveSingleProject(project)),
           (errors)=>dispatch(receiveProjectErrors(errors.responseJSON)))
 )
+
+
+export const fetchRelevantProjects = (agency_id) => (dispatch) =>(
+  APIProjectsUtil.fetchRelevantProjects(agency_id)
+    .then((projects)=>dispatch(receiveProjects(projects)),
+          (errors)=>dispatch(receiveProjectErrors(errors.responseJSON)))
+)

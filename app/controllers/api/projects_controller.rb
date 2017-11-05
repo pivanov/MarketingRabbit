@@ -23,6 +23,28 @@ class Api::ProjectsController < ApplicationController
   end
 
   def relevantProjects
+    # this will give us the agency of interest
+    # @agency now has all the information we need from the agency
+    agency = Agency.find_by(id: params[:agency_id])
+    # agency_city_ids = @agency.city_ids
+    # agency_industry_ids = @agency.industry_ids
+    relevant_projects = {}
+    agency_service_ids = agency.service_ids
+    projects = Project.all
+
+    projects.each do |project|
+      if agency_service_ids.include?(project.service_needed_id)
+        relevant_projects[project.id] = project
+      end
+    end
+    render json: relevant_projects
+    # get the list of all the projects that have a location preference
+    # maybe make this into a hash
+    # @relevant_projects = self.filter_relevant_projects(agency_city_ids, agency_industry_ids, agency_service_ids)
+
+
+    # FINDING & SORTING
+    # SORTING WILL BE WHERE THE POINT SYSTEM WILL COME INTO PLAY
     # project_params will be an object with all the keys we need to iterate through
     # to find relevant projects
     # project_params = {city_ids, service_ids, etc.}

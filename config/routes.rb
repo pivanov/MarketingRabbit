@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :sectors, only: [:index]
     resources :services, only: [:index]
     resources :cities, only: [:index]
+    get 'projects/relevant/:agency_id', to: 'projects#relevantProjects'
   end
 
 end

@@ -56,15 +56,16 @@ class BusinessSignUp extends React.Component{
   // }
 
   handleSubmit(){
-    // e.preventDefault();
-    if(fieldValues.industries_served_ids != "") {
-      const industryIdsArray = fieldValues.industries_served_ids.map((el)=>{
-        return el.value
-      })
-      const completeValues = Object.assign({}, fieldValues, {industries_served_ids: industryIdsArray})
-      this.props.registerBusiness(completeValues).then(()=>this.props.history.push('/'))
-    }
-    this.props.registerBusiness(fieldValues)
+    // // e.preventDefault();
+    // if(fieldValues.industries_served_ids != "") {
+    //   const industryIdsArray = fieldValues.industries_served_ids.map((el)=>{
+    //     return el.value
+    //   })
+    //   const completeValues = Object.assign({}, fieldValues, {industries_served_ids: industryIdsArray})
+    //   this.props.registerBusiness(completeValues).then(()=>this.props.history.push('/'))
+    // }
+    debugger
+    this.props.registerBusiness(fieldValues).then(()=>this.props.history.push('/dashboard'))
   }
 
   saveValues(values){

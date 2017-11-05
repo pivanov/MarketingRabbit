@@ -27,3 +27,11 @@ export const updateProject = (project) => {
     data: {project: project}
   })
 }
+
+
+export const fetchRelevantProjects = (agency_id) =>{
+  return $.ajax({
+    method: "GET",
+    url: `api/projects/relevant/${agency_id}`
+  })
+}

@@ -34,6 +34,16 @@ const BusinessProtected = ({component: Component, path, loggedIn, is_business}) 
   )}/>
 )
 
+const AgencyProtected = ({component: Component, path, loggedIn, is_agency}) => (
+  <Route path={path} render={(props) => (
+     (loggedIn && is_agency) ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to="/login"/>
+    )
+  )}/>
+)
+
 // access the Redux state to check if the user is logged in
 const mapStateToProps = state => {
   let type = null;
@@ -41,7 +51,8 @@ const mapStateToProps = state => {
     type = state.session.currentUser.type
   }
   return {loggedIn: Boolean(state.session.currentUser),
-          is_business: type == "Business"};
+          is_business: type == "Business",
+          is_agency: type == "Agency"};
 }
 
 // connect Auth to the redux state
@@ -52,3 +63,5 @@ export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protecte
 
 
 export const BusinessProtectedRoute = withRouter(connect(mapStateToProps, null)(BusinessProtected));
+
+export const AgencyProtectedRoute = withRouter(connect(mapStateToProps, null)(AgencyProtected));

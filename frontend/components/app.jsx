@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import SharedPageContainer from './businesses/shared_page_container';
-import { AuthRoute, BusinessProtectedRoute, ProtectedRoute} from '../util/route_util';
+import { AuthRoute, BusinessProtectedRoute, ProtectedRoute, AgencyProtectedRoute} from '../util/route_util';
 import AgencyRegistrationProcessContainer from './agencies/agency_registration_process_container';
 import AgencyRegisterSplashPage from './agencies/agency_register_splash_page';
 import ServiceFormContainer from './dashboard/service_form_container';
@@ -27,7 +27,7 @@ const App = () => (
       <BusinessProtectedRoute exact path="/dashboard/projects" component={ProjectsPageContainer}/>
       <BusinessProtectedRoute exact path="/dashboard/projects/new" component={ServiceFormContainer}/>
       <BusinessProtectedRoute exact path="/dashboard/projects/:projectId" component={ProjectShowContainer}/>
-      <ProtectedRoute exact path="/dashboard/available-projects" component={AvailableProjectsContainer} />
+      <AgencyProtectedRoute exact path="/dashboard/available-projects" component={AvailableProjectsContainer} />
     </Switch>
   </div>
 );

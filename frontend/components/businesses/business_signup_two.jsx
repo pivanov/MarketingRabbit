@@ -67,8 +67,11 @@ class BusinessSignUpTwo extends React.Component{
     this.props.previousStep()
   }
 
-  handlIds(ids){
-    this.setState({industries_served_ids: ids})
+  handlIds(vals){
+    let industriesIds = vals.map((obj)=>{
+      return obj.value
+    })
+    this.setState({industries_served_ids: industriesIds})
   }
 
   handleBusinessTypeRadios(v){
@@ -83,7 +86,7 @@ class BusinessSignUpTwo extends React.Component{
       return(
         <div>
           <label htmlFor="industry">Which industries does your business mainly serve?</label>
-          <VirtualizedSelect multi={true} autoFocus clearable={false} className="business-industry-options-bar" options={industries} value={this.state.industries_served_ids} onChange={val=>(this.handlIds(val))}/>
+          <VirtualizedSelect multi={true} autoFocus clearable={false} className="business-industry-options-bar" options={industries} value={this.state.industries_served_ids} onChange={vals=>(this.handlIds(vals))}/>
         </div>
       )
     }
