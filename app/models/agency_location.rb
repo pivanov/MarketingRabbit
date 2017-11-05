@@ -1,4 +1,4 @@
-class AgencyLocations < ApplicationRecord
+class AgencyLocation < ApplicationRecord
   validates :agency, :city, presence: true
 
   belongs_to :agency,
@@ -11,6 +11,6 @@ class AgencyLocations < ApplicationRecord
     foreign_key: :city_id,
     primary_key: :id
 
-  
+
 
 end

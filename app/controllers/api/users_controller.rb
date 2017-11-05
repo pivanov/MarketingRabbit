@@ -34,9 +34,12 @@ class Api::UsersController < ApplicationController
       :logo_file_name,
       :business_type_served,
       :minimum_project_size,
+      :agency_type,
+      :phone_number,
       industries_served_ids: [],
       service_ids: [],
-      vertical_ids: [],
+      sector_ids: [],
+      industry_ids: [],
       city_ids: []
     )
   end

@@ -12,7 +12,8 @@ var agencyFields = {
     city_ids: "",
     password: "",
     service_ids: "",
-    vertical_ids: "",
+    sector_ids: "",
+    industry_ids: "",
     business_type_served: "",
     minimum_project_size: ""
 }
@@ -40,7 +41,7 @@ class AgencyRegistrationProcess extends React.Component{
       city_ids: "",
       password: "",
       service_ids: "",
-      vertical_ids: "",
+      sector_ids: "",
       business_type_served: "",
       minimum_project_size: ""
     }
@@ -67,30 +68,31 @@ class AgencyRegistrationProcess extends React.Component{
       case 1:
         return(
           <AgencyRegisterStepOne
+            previousStep={this.previousStep}
             agencyFields={agencyFields}
-            nextStep={this.nextStep}
             saveValues={this.saveValues}
-            />
+            services={this.props.services}
+            nextStep={this.nextStep} />
         )
       case 2:
         return(
           <AgencyRegisterStepTwo
+            nextStep={this.nextStep}
             previousStep={this.previousStep}
             agencyFields={agencyFields}
             saveValues={this.saveValues}
-            errors={this.props.errors}
             cities={this.props.cities}
-            services={this.props.services}
             sectors={this.props.sectors}
-            nextStep={this.nextStep} />
+            industries={this.props.industries}/>
         )
       case 3:
         return(
           <AgencyRegisterStepThree
-            previousStep={this.previousStep}
             agencyFields={agencyFields}
+            previousStep={this.previousStep}
             saveValues={this.saveValues}
-            handleSubmit={this.handleSubmit} />
+            errors={this.props.errors}
+            handleSubmit={this.handleSubmit}/>
         )
     }
   }

@@ -10,17 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103214125) do
+ActiveRecord::Schema.define(version: 20171105015323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agency_industry_servicings", force: :cascade do |t|
+    t.integer "agency_id", null: false
+    t.integer "industry_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "agency_locations", force: :cascade do |t|
     t.integer "city_id", null: false
     t.integer "agency_id", null: false
   end
 
-  create_table "agency_servicings", force: :cascade do |t|
+  create_table "agency_sector_servicings", force: :cascade do |t|
     t.integer "agency_id", null: false
     t.integer "sector_id", null: false
     t.datetime "created_at", null: false
@@ -108,8 +115,10 @@ ActiveRecord::Schema.define(version: 20171103214125) do
     t.string "logo_file_name"
     t.integer "industry_id"
     t.string "business_type"
-    t.string "business_type_served", null: false
-    t.integer "minimum_project_size", null: false
+    t.string "phone_number"
+    t.string "agency_type"
+    t.string "business_type_served"
+    t.integer "minimum_project_size"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization"], name: "index_users_on_organization"
     t.index ["type"], name: "index_users_on_type"

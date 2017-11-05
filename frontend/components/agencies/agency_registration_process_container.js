@@ -6,7 +6,8 @@ const mapStateToProps = (state) => ({
   errors: state.errors.registration,
   cities: state.entities.cities,
   services: state.entities.services,
-  sectors: state.entities.sectors
+  sectors: state.entities.sectors,
+  industries: state.entities.industries
 })
 
 const mapDispatchToProps = (dispatch) => ({

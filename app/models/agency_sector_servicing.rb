@@ -1,4 +1,4 @@
-class AgencyServicing < ApplicationRecord
+class AgencySectorServicing < ApplicationRecord
   validates :sector, :agency, presence: true
 
   belongs_to :sector,
