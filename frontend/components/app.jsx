@@ -6,17 +6,19 @@ import AgencyRegistrationProcessContainer from './agencies/agency_registration_p
 import AgencyRegisterSplashPage from './agencies/agency_register_splash_page';
 import ServiceFormContainer from './dashboard/service_form_container';
 import DashboardHome from './dashboard/dashboard_home';
-import HomePage from './home_page';
+import HomePageContainer from './home_page_container';
 import HeaderContainer from './header_container';
 import ProjectsPageContainer from './dashboard/projects_page_container';
 import ProjectShowContainer from './dashboard/project_show_container';
-import AvailableProjectsContainer from './dashboard/available_projects_container'
+import AvailableProjectsContainer from './dashboard/available_projects_container';
+import AgencySearchPageContainer from './agency_search/agency_search_page_container';
 
 const App = () => (
   <div id="app-container">
     <HeaderContainer/>
     <Switch>
-      <AuthRoute exact path="/" component={HomePage}/>
+      <AuthRoute exact path="/agency-search/:serviceId" component={AgencySearchPageContainer}/>
+      <AuthRoute exact path="/" component={HomePageContainer}/>
       <AuthRoute exact path="/signup" component={SharedPageContainer} />
       <AuthRoute exact path="/login" component={SharedPageContainer} />
       <AuthRoute exact path="/register-agency" component={AgencyRegisterSplashPage} />

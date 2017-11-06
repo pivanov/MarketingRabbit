@@ -1,8 +1,15 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 
 class AgencyRegisterSplashPage extends React.Component{
   constructor(props){
     super(props)
+    this.handleFormRedirect = this.handleFormRedirect.bind(this)
+  }
+
+  handleFormRedirect(e){
+    e.preventDefault()
+    this.props.history.push('/register-agency/form')
   }
 
   render(){
@@ -15,6 +22,9 @@ class AgencyRegisterSplashPage extends React.Component{
                 <h1>There is always room for growth</h1>
                 <h4>Register your agency.</h4>
               </section>
+              <section className="to-register-form-button-container">
+                <button onClick={this.handleFormRedirect}>Go to form</button>
+              </section>
             </section>
           </div>
         </header>
@@ -23,4 +33,4 @@ class AgencyRegisterSplashPage extends React.Component{
   }
 }
 
-export default AgencyRegisterSplashPage;
+export default withRouter(AgencyRegisterSplashPage);

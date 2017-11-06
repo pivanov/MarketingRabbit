@@ -10,6 +10,7 @@
     "griddle-react": "^1.9.0",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
+    "react-autosuggest": "^9.3.2",
     "react-dom": "^16.0.0",
     "react-lazyload": "^2.3.0",
     "react-places-autocomplete": "^5.4.3",

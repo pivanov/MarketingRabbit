@@ -11,26 +11,35 @@
 
 
 .splash-header-content-container{
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-auto-rows: minmax(100px, auto);
 
 }
 
 .splash-header-jumbo-text{
-  grid-column: 2 / 5;
+  text-align: center;
   font-size: 40px;
   color: $black-grey;
 }
 
-.agency-first-form-container{
-  grid-column: 7 / 10;
-  background-color: white;
-  padding: 30px;
-  border-radius: 5px;
-  border: 1px solid $light-grey;
-}
+// .agency-first-form-container{
+//   grid-column: 7 / 10;
+//   background-color: white;
+//   padding: 30px;
+//   border-radius: 5px;
+//   border: 1px solid $light-grey;
+// }
 
 .main-header-content-container {
   height: 80%;
+  width: 100%;
+}
+
+.to-register-form-button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.to-register-form-button-container button{
+  background-color: $pure-orange;
+  color: white;
+  padding: 10px 20px 10px 20px;
 }

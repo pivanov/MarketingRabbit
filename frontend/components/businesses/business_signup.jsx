@@ -16,7 +16,6 @@ var fieldValues = {
   email: "",
   password: "",
   website: "",
-  industries_served_ids: "",
   business_type: "B2B"
 }
 
@@ -40,7 +39,7 @@ class BusinessSignUp extends React.Component{
         firstname: "",
         lastname: "",
         organization: "",
-        industry_id: "",
+        industry_id: "default",
         email: "",
         password: "",
         website: "",
@@ -49,22 +48,7 @@ class BusinessSignUp extends React.Component{
     }
   }
 
-  // componentWillUnmount(){
-  //   window.onbeforeunload = function() {
-  //     return "Leaving this page will reset the wizard";
-  //   }
-  // }
-
   handleSubmit(){
-    // // e.preventDefault();
-    // if(fieldValues.industries_served_ids != "") {
-    //   const industryIdsArray = fieldValues.industries_served_ids.map((el)=>{
-    //     return el.value
-    //   })
-    //   const completeValues = Object.assign({}, fieldValues, {industries_served_ids: industryIdsArray})
-    //   this.props.registerBusiness(completeValues).then(()=>this.props.history.push('/'))
-    // }
-    debugger
     this.props.registerBusiness(fieldValues).then(()=>this.props.history.push('/dashboard'))
   }
 
@@ -74,14 +58,7 @@ class BusinessSignUp extends React.Component{
 
 
   nextStep(){
-    this.props.registerBusiness(fieldValues)
-      .then(()=>this.setState({step: this.state.step + 1}),
-      (errors)=>{
-        let errorsArray = Object.keys(errors.errors)
-        if(errorsArray.length == 1){
-          this.setState({step: this.state.step + 1})
-        }
-      })
+    this.setState({step: this.state.step + 1})
   }
 
   previousStep(e){

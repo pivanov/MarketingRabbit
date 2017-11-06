@@ -14,7 +14,6 @@ class ProjectsPage extends React.Component{
   }
 
   componentDidMount(){
-    // debugger
     this.props.fetchProjects(this.props.currentUser.id)
   }
 

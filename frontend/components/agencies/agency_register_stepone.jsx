@@ -81,7 +81,7 @@ class AgencyRegisterStepOne extends React.Component{
             <label>Website</label>
             <input type="text" ref={input=>this.website = input} defaultValue={this.props.agencyFields.website}/>
             <label>Is your agency full-service or specialized?</label>
-            <div>
+            <div className="agency-typ-radios-container">
               <RadioGroup onChange={this.handleAgencyTypeRadios} value={`${this.props.agencyFields.agency_type}`} horizontal>
                 <RadioButton value="full-service" pointColor="#ff5722">
                   full-service
@@ -92,7 +92,9 @@ class AgencyRegisterStepOne extends React.Component{
               </RadioGroup>
             </div>
             <label>What service(s) does your agency provide?</label>
-            <VirtualizedSelect multi={true} autoFocus clearable={false} options={services} value={this.state.service_ids} onChange={vals=>(this.handleIds(vals, "service_ids"))}/>
+            <div className="v-select-bar">
+              <VirtualizedSelect multi={true} autoFocus clearable={false} options={services} value={this.state.service_ids} onChange={vals=>(this.handleIds(vals, "service_ids"))}/>
+            </div>
           </section>
           <button>Continue</button>
           {this.showInputError()}

@@ -3,7 +3,7 @@ import VirtualizedSelect from 'react-virtualized-select';
 import 'react-select/dist/react-select.css';
 import 'react-virtualized/styles.css'
 import 'react-virtualized-select/styles.css'
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
+
 // last three imports are for select-drop-down package
 // need css-loader and style-loader in webpack
 
@@ -11,38 +11,30 @@ class BusinessSignUpTwo extends React.Component{
   constructor(props){
     super(props)
     this.state ={
-      industries_served_ids: [],
-      business_type: "B2B"
+      email: "",
+      password: "",
+      website: ""
     }
     // this.state = Object.assign({}, this.props.inputFields)
     // this.handleInput = this.handleInput.bind(this)
     this.nextStep = this.nextStep.bind(this)
     this.previousStep = this.previousStep.bind(this)
-    this.handlIds = this.handlIds.bind(this)
-    this.handleBusinessTypeRadios = this.handleBusinessTypeRadios.bind(this)
-    this.renderServedIndustriesDropdown = this.renderServedIndustriesDropdown.bind(this)
     this.checkForField = this.checkForField.bind(this)
   }
 
   componentWillMount(){
     this.props.clearRegistrationErrors();
-    this.props.inputFields.password = "",
-    this.setState({industries_served_ids: this.props.inputFields.industries_served_ids, business_type: this.props.inputFields.business_type})
+    this.setState({password: ""})
   }
 
   checkForField(fieldError, field){
     const errorFieldObject= eval(`this.props.errors.${fieldError}`);
     if (errorFieldObject){
-      if(fieldError == "password"){
-        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
-      } else if(fieldError == 'email' && this.props.errors[fieldError][0] !== 'has already been taken'){
-        return <p>{field + " " + "is required"}</p>
-      } else if (fieldError == "email"){
-        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
+      if(fieldError == 'email'){
+        return <p>This field is required</p>
       } else {
-        return <p>{field + " " + "is required"}</p>
+        return <p>{field + " " + this.props.errors[fieldError][0]}</p>
       }
-
     }
   }
 
@@ -50,8 +42,8 @@ class BusinessSignUpTwo extends React.Component{
     e.preventDefault()
     var data = {
       password: this.password.value,
-      industries_served_ids: this.state.industries_served_ids,
-      business_type: this.state.business_type
+      email: this.email.value,
+      website: this.website.value
     }
     this.props.saveValues(data)
     this.props.handleSubmit()
@@ -60,57 +52,28 @@ class BusinessSignUpTwo extends React.Component{
   previousStep(e){
     e.preventDefault()
     var data = {
-      industries_served_ids: this.state.industries_served_ids,
-      business_type: this.state.business_type
+      email: this.email.value,
+      password: this.password.value,
+      website: this.website.value
     }
     this.props.saveValues(data)
     this.props.previousStep()
-  }
-
-  handlIds(vals){
-    let industriesIds = vals.map((obj)=>{
-      return obj.value
-    })
-    this.setState({industries_served_ids: industriesIds})
-  }
-
-  handleBusinessTypeRadios(v){
-    this.setState({business_type: v, industries_served_ids: []})
-  }
-
-  renderServedIndustriesDropdown(){
-    const industries = this.props.industries.map((industry)=>{
-      return {value: industry.id, label: industry.name}
-    })
-    if(this.state.business_type == 'B2B'){
-      return(
-        <div>
-          <label htmlFor="industry">Which industries does your business mainly serve?</label>
-          <VirtualizedSelect multi={true} autoFocus clearable={false} className="business-industry-options-bar" options={industries} value={this.state.industries_served_ids} onChange={vals=>(this.handlIds(vals))}/>
-        </div>
-      )
-    }
   }
 
   render(){
 
     return (
       <form className="sharedForm">
-        <label>Is your business B2B or B2C?</label>
-        <div className="business-type-radio-container">
-          <RadioGroup onChange={this.handleBusinessTypeRadios} value={`${this.props.inputFields.business_type}`} horizontal>
-            <RadioButton value="B2B" pointColor="#ff5722">
-              B2B
-            </RadioButton>
-            <RadioButton value="B2C" pointColor="#ff5722">
-              B2C
-            </RadioButton>
-          </RadioGroup>
-        </div>
-        {this.renderServedIndustriesDropdown()}
+        <label htmlFor="website">Website</label>
+        <input ref={(input)=>this.website=input} id="website" placeholder="https://your-website.com" type="text" defaultValue={this.props.inputFields.website} />
+        {this.checkForField("website", "website")}
+        <br />
+        <label htmlFor="email">Business Email</label>
+        <input ref={(input)=>this.email=input} id="email" placeholder="you@your-email.com" type="text" defaultValue={this.props.inputFields.email} />
+        {this.checkForField("email", "email")}
         <br/>
         <label htmlFor="password">Password</label>
-        <input ref={(input)=>this.password=input} id="password" placeholder="Password" type="password" defaultValue={this.props.inputFields.password} />
+        <input ref={(input)=>this.password=input} id="password" placeholder="Password" type="password" defaultValue={this.state.password} />
         {this.checkForField('password', 'password')}
         <br />
         <div className="business-signup-steptwo-buttons-container">
